@@ -1,8 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import DataAPI from '../../api/DataAPI';
+import {loadProductsFromAPI} from '../../api/DataAPI'
 
 const WorkstationForm = () => {
-
+    
     const [state, setState] =  useState({});
+    const [products, setProducts] = useState({});
+
+    useEffect(() => {loadProductsFromAPI().then(item=>item).then(data=>setProducts(data))},[]);
+
+    console.log(products)
 
 
     const changeValue = e => {
@@ -22,7 +29,7 @@ const WorkstationForm = () => {
     const inputFields = [
         {name: 'type', value: 'type', type: 'string', description: 'Typ'},
         {name: 'model', value: 'type', type: 'string', description: 'Model'},
-        {name: 'price', value: 'price', type: 'number', description: 'Cena'}
+        {name: 'price', value: 22, type: 'number', description: 'Cena'}
     ]
 
 
