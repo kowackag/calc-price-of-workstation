@@ -46,6 +46,8 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         width: 100%;
+        max-width: 1300px;
+        margin: auto;
         padding: 2rem;
         font-family: "Lato", Verdana, sans-serif;
         font-size: 1.6rem;

@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 const StyledApp = styled.section`
-    margin: auto;
-    
-    & h1 {
+     & h1 {
+        margin-bottom: 4rem;
         text-align: center;
         color: rgb(var(--color-alfa));
+    }
+
+    &>div {
+        display: flex;
+        justify-content: center;
     }
 `
 

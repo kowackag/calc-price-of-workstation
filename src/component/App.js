@@ -40,8 +40,9 @@ const App = () => {
           <div>
             <div>
               <WorkstationForm/>
+              <section style={{backgroundColor: "rgb(54,54,54)", color: "white"}}>Podsumowanie</section>
             </div>
-              <section style={{backgroundColor: "rgb(10,8,110)", color: "white"}}>Podsumowanie</section>
+            <section style={{backgroundColor: "rgb(10,8,110)", color: "white"}}>Suma:</section>
           </div>
         </StyledApp>
       </UpdateContext.Provider>

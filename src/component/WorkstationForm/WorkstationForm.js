@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {v4 as uuid} from 'uuid';
-
+import {v4 as uuid} from 'uuid'
 import {UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
 
+import Dropdown from '../Dropdown/Dropdown.js';
 import Input from '../Input/Input.js';
+import Submit from '../Submit/Submit';
 
 import StyledWorkstationForm from './WorkstationForm.styled.js';
 
@@ -15,13 +16,13 @@ const WorkstationForm = () => {
         type: '',
         model: '',
         price: '',
-        price: ''
+        info: ''
     }
 
     const [state, setState] =  useState(init);
-    const {type, model, price, info} = state;
+    const {id, category, type, model, price, info} = state;
     const [products, setProducts] = useState({});
-
+   
     useEffect(() => {loadProductsFromAPI().then(item=>item).then(data=>setProducts(data))},[]);
 
     const updateComponentList = useContext(UpdateContext)
@@ -31,13 +32,18 @@ const WorkstationForm = () => {
         setState({...state, [e.target.name]: e.target.value})
     }
 
+    const setValue = e => {
+        e.preventDefault();
+        console.log(e.target)
+        setState({...state, category: e.target.dataset.code})
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setState(init);
         updateComponentList(state, 'add')
     }
 
-    
     const inputFields = [
         {name: 'type', value: type, type: 'string', description: 'Typ'},
         {name: 'model', value: model, type: 'string', description: 'Model'},
@@ -45,30 +51,32 @@ const WorkstationForm = () => {
         {name: 'info', value: info, type: 'textarea', description: 'Uwagi'}
     ]
 
-
     return (
         <StyledWorkstationForm onSubmit={handleSubmit}>
-            <label>Kategoria
-                <select name="category" onChange={changeValue}>
-                    <option></option>
-                    <option value="netbook">komputer</option>
-                    <option value="offLineEquipm">urządzenia peryferyjne</option>
-                    <option value="software">oprogramowanie</option>
-                    <option value="other">inne</option>
-                </select>
-            </label>
+            <label>Kategoria</label>
+            <Dropdown 
+                name="category" 
+                value={category} 
+                categ={products.category ? products.category : []} 
+                onChange={setValue}
+            />
             <div>
                 {inputFields.map(({name, value, type, description})=>(
                     <div key={name}>
                         <label htmlFor={name}>{description}</label>
-                        <Input id={name} type={type} name={name} value={value} onChange={changeValue}/>
-                    </div >
+                        <Input 
+                            id={name} 
+                            type={type} 
+                            name={name} 
+                            value={value} 
+                            onChange={changeValue}
+                        />
+                    </div>
                 ))}
             </div>
-            <button>Dodaj</button>
+            <Submit type="submit">Dodaj</Submit>
         </StyledWorkstationForm>
     )
 }
-
 
 export default WorkstationForm;

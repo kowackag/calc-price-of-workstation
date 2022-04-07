@@ -5,6 +5,7 @@ const StyledInput = styled.input`
     padding: 1rem;
     margin-bottom: 2.5rem;
     margin-right: 2rem;
+    margin-left: 2rem;
     height: 3.5rem;
     outline: none;
     border: 1px solid rgb(var(--color-line));
