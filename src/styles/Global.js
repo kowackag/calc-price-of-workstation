@@ -12,10 +12,11 @@ const GlobalStyle = createGlobalStyle`
         --color-alfa: ${props=>props.theme.colorDark};
         --color-beta: ${props=>props.theme.colorLight};
         --color-contrast:${props=>props.theme.colorContrast};
+        --color-line:${props=>props.theme.colorLine};
     }
 
     @font-face {
-        font-family: "Roboto";
+        font-family: "Lato";
         font-style: regular;
         font-weight: 400;
         src:
@@ -23,27 +24,29 @@ const GlobalStyle = createGlobalStyle`
         url(${latoRegularWoff}) format('woff');
     }
     @font-face {
-        font-family: "Roboto";
+        font-family: "Lato";
         font-weight: 700;
         src:
         url(${latoBoldWoff2}) format('woff2'),
         url(${latoBoldWoff}) format('woff');
     }
     @font-face {
-        font-family: "Roboto";
+        font-family: "Lato";
         font-style: italic;
         font-weight: 400;
         src:
         url(${latoItalicWoff2}) format('woff2'),
         url(${latoItalicWoff}) format('woff');
     }
+
     html {
-        width:100ww;
+        width:100vw;
         font-size: 10px;
     }
 
     body {
         width: 100%;
+        padding: 2rem;
         font-family: "Lato", Verdana, sans-serif;
         font-size: 1.6rem;
         color: rgb(var(--color-font));

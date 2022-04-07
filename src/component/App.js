@@ -38,7 +38,10 @@ const App = () => {
         <StyledApp>
           <h1>Konfigurator stanowiska komputerowego</h1>
           <div>
-            <WorkstationForm/>
+            <div>
+              <WorkstationForm/>
+            </div>
+              <section style={{backgroundColor: "rgb(10,8,110)", color: "white"}}>Podsumowanie</section>
           </div>
         </StyledApp>
       </UpdateContext.Provider>
