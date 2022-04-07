@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {v4 as uuid} from 'uuid';
 
-import {ItemContext, UpdateContext} from '../context.js';
+import {UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
 
 const WorkstationForm = () => {
@@ -29,7 +29,7 @@ const WorkstationForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setState(init);
-        updateComponentList()
+        updateComponentList(state, 'add')
     }
 
     
@@ -44,12 +44,12 @@ const WorkstationForm = () => {
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Kategoria</label>
-                <select>
+                <select name="category" onChange={changeValue}>
                     <option></option>
-                    <option>komputer</option>
-                    <option>urządzenia peryferyjne</option>
-                    <option>oprogramowanie</option>
-                    <option>inne</option>
+                    <option value="netbook">komputer</option>
+                    <option value="offLineEquipm">urządzenia peryferyjne</option>
+                    <option value="software">oprogramowanie</option>
+                    <option value="other">inne</option>
                 </select>
             </div>
             
