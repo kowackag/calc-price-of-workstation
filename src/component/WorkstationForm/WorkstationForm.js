@@ -3,10 +3,12 @@ import {v4 as uuid} from 'uuid'
 
 import {UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
+import {validateData} from './../../validateData';
 
 import Dropdown from '../Dropdown/Dropdown.js';
 import Input from '../Input/Input.js';
 import Submit from '../Submit/Submit';
+import Error from '../Error/Error.js';
 
 import StyledWorkstationForm from './WorkstationForm.styled.js';
 
@@ -23,7 +25,16 @@ const WorkstationForm = () => {
     const [state, setState] =  useState(init);
     const {category, type, model, price, info} = state;
     const [categories, setCategories] = useState([]);
-   
+    const [err, setErr] = useState({});
+
+    const {
+        category: errCategory,
+        type: errType,
+        model: errModel,
+        price: errPrice
+    } = err;
+
+
     useEffect(() => {
         loadProductsFromAPI('categories')
             .then(item=>item)
@@ -44,14 +55,19 @@ const WorkstationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setState(init);
-        updateComponentList(state, 'add')
+        const errors = validateData(state);
+        console.log(errors)
+        setErr(errors)
+        if (Object.keys(errors).length === 0) {
+            updateComponentList(state, 'add');
+            setState(init);
+        }
     }
 
     const inputFields = [
-        {name: 'type', value: type, type: 'string', description: 'Typ'},
-        {name: 'model', value: model, type: 'string', description: 'Model'},
-        {name: 'price', value: price, type: 'number', description: 'Cena'},
+        {name: 'type', value: type, type: 'string', description: 'Typ', err: errType},
+        {name: 'model', value: model, type: 'string', description: 'Model', err: errModel},
+        {name: 'price', value: price, type: 'number', description: 'Cena', min: 0, err: errPrice},
         {name: 'info', value: info, type: 'textarea', description: 'Uwagi'}
     ]
 
@@ -63,9 +79,10 @@ const WorkstationForm = () => {
                 value={category} 
                 categ={categories ? categories : []} 
                 onChange={setValue}
+                err={errCategory}
             />
             <div>
-                {inputFields.map(({name, value, type, description})=>(
+                {inputFields.map(({name, value, type, description, min, err})=>(
                     <div key={name}>
                         <label htmlFor={name}>{description}</label>
                         <Input 
@@ -73,8 +90,10 @@ const WorkstationForm = () => {
                             type={type} 
                             name={name} 
                             value={value} 
+                            min={min}
                             onChange={changeValue}
                         />
+                        {err && <Error err={err}/>}
                     </div>
                 ))}
             </div>

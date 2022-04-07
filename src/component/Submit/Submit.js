@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import StyledSubmit from './Submit.styled';
 
-const Submit = ({children, type}) => {
+const Submit = ({children}) => {
     return( 
         <StyledSubmit>{children}</StyledSubmit>
     )

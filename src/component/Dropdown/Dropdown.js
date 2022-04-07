@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
+
+import Error from './../Error/Error';
+
 import StyledDropdown from './Dropdown.styled';
 
-const Dropdown = ({name, value, categ, onChange}) => {
+const Dropdown = ({name, value, categ, onChange, err}) => {
     
     const [isActive, setIsActive] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
@@ -27,7 +30,9 @@ const Dropdown = ({name, value, categ, onChange}) => {
                 onBlur={handleOnBlur} 
                 readOnly={true}
             />
+           
             <label></label> 
+            <> {err && <Error err={err}/>}</>
             <ul onMouseOver={()=>setIsOnMouse(true)} onMouseLeave={handleOnMouseLeave}>
                 {categ.map(el=><li key={el} data-code={el} name={name} onClick={onChange}>{el}</li>)} 
             </ul>

@@ -1,7 +1,9 @@
 import React, {useEffect, useState, useContext} from 'react';
 
-import {ItemContext} from '../context.js';
+import {ItemContext, UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
+
+import Button from './../Button/Button'
 
 import StyledWorkstationTable from './WorkstationTable.styled';
 
@@ -9,7 +11,9 @@ import StyledWorkstationTable from './WorkstationTable.styled';
 const WorkstationTable = () => {
     
     const componentsList = useContext(ItemContext);
-    const columnsNames = ["Typ", "Model", "Cena", "Uwagi"]
+    const updateContext = useContext(UpdateContext);
+    
+    const columnsNames = ["Nazwa", "Model", "Kategoria", "Cena", "Uwagi", ""]
 
     const [categories, setCategories] = useState([]);
    
@@ -19,12 +23,75 @@ const WorkstationTable = () => {
             .then(data=>setCategories(data))
     },[]);
 
+    const [isSorted, setIsSorted] = useState(false);
+
+
+    const deleteItem = e => {
+        e.preventDefault();
+        const id =  e.target.dataset.id;
+        updateContext(id, 'remove')
+    }
+
+    const updateItem = e => {
+        e.preventDefault();
+        const id =  e.target.dataset.id;
+        updateContext(id, 'update')
+    }
 
     const getSumPriceByCategory = (arr, cat) => {
-       return arr.filter(({category})=>category === cat).reduce((sum,{price})=>sum+Number(price),0).toFixed(2)
+        return arr.filter(({category})=>category === cat).reduce((sum,{price})=>sum+Number(price),0).toFixed(2)
     }
 
 
+    const Components = () => {
+        return categories.map((cat,ind)=>(
+            <React.Fragment key={ind}>
+                {componentsList.filter(({category})=>category === cat)
+                .map(({id, type, model, category, price, info})=>(
+                <tr key={id}>
+                    <td>{type}</td>
+                    <td>{model}</td>
+                    <td>{category}</td>
+                    <td>{`${price} PLN`}</td>
+                    <td>{info}</td>
+                    <td>{
+                        <>
+                            <Button onClick={deleteItem} id={id}>usuń</Button>
+                            <Button onClick={updateItem} id={id}>usuń</Button>                                
+                        </>
+                    }</td>
+                </tr>))}
+            </React.Fragment>)
+        )
+    }
+
+    const SortedComponents = () => {
+        return categories.map((cat,ind)=>(
+            <React.Fragment key={ind}>
+                <tr>
+                    <th>{cat}</th>
+                    <th colSpan="4"></th>  
+                    <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
+                </tr>
+                {componentsList.filter(({category})=>category === cat)
+                .map(({id, type, model, price, info})=>(
+                <tr key={id}>
+                    <td>{type}</td>
+                    <td>{model}</td>
+                    <td>{`${price} PLN`}</td>
+                    <td>{info}</td>
+                    <td>{
+                        <>
+                            <Button onClick={deleteItem} id={id}>usuń</Button>
+                            <Button onClick={updateItem} id={id}>usuń</Button>                                
+                        </>
+                    }</td>
+                </tr>))}
+            </React.Fragment>)
+        )
+    }
+
+     
     return (
         <StyledWorkstationTable>
             <h2>Wybrane komponenty:</h2>
@@ -35,28 +102,10 @@ const WorkstationTable = () => {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>{categories.map(cat=>(
-                    <>
-                        <tr>
-                            <th>{cat}</th>
-                            <th colSpan="3"></th>  
-                            <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
-                        </tr>
-                        {componentsList.filter(({category})=>category === cat)
-                        .map(({id, type, model, price, info})=>(
-                        <tr key={id}>
-                            <td>{type}</td>
-                            <td>{model}</td>
-                            <td>{price}</td>
-                            <td>{info}</td>
-                            <td>{<button>usuń</button>}</td>
-                        </tr>))}
-                    </>)
-                )}
-                </tbody>
+                <tbody>{isSorted === true ? <SortedComponents/> : <Components/>}</tbody>
                 <tfoot>
                     <tr> 
-                        <td colSpan="4">Łączny koszt</td>
+                        <td colSpan="5">Łączny koszt</td>
                         <td>777 PLN</td>
                     </tr>
                 </tfoot>

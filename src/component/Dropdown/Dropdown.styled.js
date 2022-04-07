@@ -1,14 +1,16 @@
 import styled, {css} from 'styled-components';
 
-const DefaultStyledDropdown = styled.div`
+const DefaultStyledDropdown = styled.span`
+    display:inline-block;
     position: relative;
-    width: 80%;
+    width: 60%;
     margin: auto;
+    margin-bottom: 3rem;
     border: 1px solid rgb(var(--color-line));
     font-size: 1.2rem;
+    color: rgb(var(--color-alfa));
 
     & input {
-        position: relative;
         display: inline-block;
         padding: 1rem;
         height: 4rem;
@@ -32,6 +34,10 @@ const DefaultStyledDropdown = styled.div`
             padding:0.4rem;
             cursor: pointer;
         }
+    }
+
+    & p {
+        padding-left: 0;
     }
 
 `

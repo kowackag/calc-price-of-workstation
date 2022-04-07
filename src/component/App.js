@@ -18,14 +18,17 @@ const App = () => {
   }
 
   const [data, setData] = useState(fromLocalStorage);
-  
-  const updateComponentList = (component, action) => {
-    switch (action) {
-      case 'add': {
-        const updatedData = [...data, component];
+  console.log(data)
+
+  const updateComponentList = (element, action) => {
+    if (action === 'add') {
+        const updatedData = [...data, element];
+        setData(updatedData);
+        setItem(updatedData, 'data');
+    } else if (action === 'remove') {
+        const updatedData = data.filter(item=>item.id !== element);
         setData(updatedData);
         setItem(updatedData, 'data')
-      }
     }
   }
 

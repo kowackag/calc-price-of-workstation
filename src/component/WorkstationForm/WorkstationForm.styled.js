@@ -8,12 +8,15 @@ const StyledWorkstationForm = styled.form`
     
     & label {
        margin-left: 2rem;
+       margin-right: 2rem;
+       margin-top: 2.5rem;
        color: rgb(var(--color-alfa));
     }
 
     & > div {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        row-gap: 2rem;
     }
 `
 

@@ -4,7 +4,7 @@ const StyledSubmit = styled.button`
     position: relative;
     display: block;
     padding: 1rem 5rem;
-    margin: auto;
+    margin: 2rem auto;
     border: 1px solid rgb(var(--color-line));
     background-color: rgba(var(--color-alfa), 0.1);
     color: rgb(var(--color-alfa));
