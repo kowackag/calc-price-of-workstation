@@ -1,32 +1,59 @@
 {
 
-"orders": [
+    "orders": [
 
-],
-   
+    ],
 
-"products": {
-    "category": ["netbook", "urządznie peryferyjne", "software", "other"],
-    "offLineEquipm": [
-        {
-            "mouse": [
-                {"model": "Logitech M705 Marathon", "price": 169 },
-                {"model": "Logitech MX Vertical Ergonomic","price": 449},
-                {"model": "HP Z5000", "price": 99},
-                {"model": "Microsoft 1850", "price": 69},
-                {"model": "Microsoft Bluetooth Mobile Mouse 3600", "price": 129}
-            ]
-        },
-        {
-            "keybord": [
-                {"model": "Logitech M705 Marathon", "price": 169 },
-                {"model": "Logitech MX Vertical Ergonomic","price": 449},
-                {"model": "HP Z5000", "price": 99},
-                {"model": "Microsoft 1850", "price": 69},
-                {"model": "Microsoft Bluetooth Mobile Mouse 3600", "price": 129}
-            ]
-        }
-    ]
+    "categories": ["komputer", "urządząnie peryferyjne", "oprogramowanie", "inne"],
+    "products": {
+
+        "urządząnia peryferyjne": [{
+                "myszka": [{
+                        "model": "Logitech M705 Marathon",
+                        "price": 169
+                    },
+                    {
+                        "model": "Logitech MX Vertical Ergonomic",
+                        "price": 449
+                    },
+                    {
+                        "model": "HP Z5000",
+                        "price": 99
+                    },
+                    {
+                        "model": "Microsoft 1850",
+                        "price": 69
+                    },
+                    {
+                        "model": "Microsoft Bluetooth Mobile Mouse 3600",
+                        "price": 129
+                    }
+                ]
+            },
+            {
+                "klawiatura": [{
+                        "model": "Logitech M705 Marathon",
+                        "price": 169
+                    },
+                    {
+                        "model": "Logitech MX Vertical Ergonomic",
+                        "price": 449
+                    },
+                    {
+                        "model": "HP Z5000",
+                        "price": 99
+                    },
+                    {
+                        "model": "Microsoft 1850",
+                        "price": 69
+                    },
+                    {
+                        "model": "Microsoft Bluetooth Mobile Mouse 3600",
+                        "price": 129
+                    }
+                ]
+            }
+        ]
+    }
+
 }
-
-} 

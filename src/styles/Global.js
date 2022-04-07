@@ -45,13 +45,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        width: 100%;
-        max-width: 1300px;
+        /* width: 100%; */
+        max-width: 1000px;
         margin: auto;
         padding: 2rem;
-        font-family: "Lato", Verdana, sans-serif;
+        font-family: "Roboto", Verdana, sans-serif;
         font-size: 1.6rem;
-        color: rgb(var(--color-font));
+        color: rgb(var(--color-alfa));
         line-height:1.5;
     }
 `

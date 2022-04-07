@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 const StyledWorkstationForm = styled.form`
-    display: block;
     padding: 2rem;
-    background-color:white;
+    width: 60%;
     border: 1px solid rgb(var(--color-line));
     border-top: 3px solid rgb(var(--color-alfa));
     

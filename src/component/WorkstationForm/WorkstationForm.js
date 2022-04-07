@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {v4 as uuid} from 'uuid'
+
 import {UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
 
@@ -20,10 +21,14 @@ const WorkstationForm = () => {
     }
 
     const [state, setState] =  useState(init);
-    const {id, category, type, model, price, info} = state;
-    const [products, setProducts] = useState({});
+    const {category, type, model, price, info} = state;
+    const [categories, setCategories] = useState([]);
    
-    useEffect(() => {loadProductsFromAPI().then(item=>item).then(data=>setProducts(data))},[]);
+    useEffect(() => {
+        loadProductsFromAPI('categories')
+            .then(item=>item)
+            .then(data=>setCategories(data))
+    },[]);
 
     const updateComponentList = useContext(UpdateContext)
 
@@ -31,10 +36,9 @@ const WorkstationForm = () => {
         e.preventDefault(); 
         setState({...state, [e.target.name]: e.target.value})
     }
-
+    
     const setValue = e => {
         e.preventDefault();
-        console.log(e.target)
         setState({...state, category: e.target.dataset.code})
     }
 
@@ -57,7 +61,7 @@ const WorkstationForm = () => {
             <Dropdown 
                 name="category" 
                 value={category} 
-                categ={products.category ? products.category : []} 
+                categ={categories ? categories : []} 
                 onChange={setValue}
             />
             <div>

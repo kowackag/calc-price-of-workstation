@@ -7,9 +7,8 @@ const StyledApp = styled.section`
         color: rgb(var(--color-alfa));
     }
 
-    &>div {
+    & > div {
         display: flex;
-        justify-content: center;
     }
 `
 

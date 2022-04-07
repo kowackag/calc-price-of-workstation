@@ -22,14 +22,16 @@ export const saveOrdersAPI = (data) => {
             .then(resp=>resp.json())
     }
 
-export const loadProductsFromAPI = () => {
+export const loadProductsFromAPI = (name) => {
     const options = {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     }
-    return fetch(`${url}/products`, options)
+    const copyUrl = `${url}/${name}`;
+    console.log(copyUrl)
+    return fetch(`${url}/${name}`, options)
             .then(resp => handleErrors(resp))
             .then(resp=>resp.json())
 }
