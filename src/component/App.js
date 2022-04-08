@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 
 import {ItemContext, UpdateContext} from './context';
 import { useStorage } from './Hooks';
+
 import WorkstationForm from './WorkstationForm/WorkstationForm';
-import WorkstationTable from './WorkstationTable/WorkstationTable';
 import WorkstationSection from './WorkstationSection/WorkstationSection';
 
 import StyledApp from './App.styled';
@@ -19,7 +19,6 @@ const App = () => {
   }
 
   const [data, setData] = useState(fromLocalStorage);
-  console.log(data)
 
   const updateComponentList = (element, action) => {
     if (action === 'add') {
@@ -28,6 +27,15 @@ const App = () => {
         setItem(updatedData, 'data');
     } else if (action === 'remove') {
         const updatedData = data.filter(item=>item.id !== element);
+        setData(updatedData);
+        setItem(updatedData, 'data')
+    } else if (action === 'update') {
+        const updatedData = data.map(item => {
+          if(item.id === element.id) {
+            return element
+          } else {
+            return item
+          }})
         setData(updatedData);
         setItem(updatedData, 'data')
     }

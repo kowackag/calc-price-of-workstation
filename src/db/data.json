@@ -5,8 +5,9 @@
     ],
 
     "categories": ["komputer", "urządząnie peryferyjne", "oprogramowanie", "inne"],
-    "products": {
+    "products":
 
+    {
         "urządząnia peryferyjne": [{
                 "myszka": [{
                         "model": "Logitech M705 Marathon",
@@ -53,7 +54,38 @@
                     }
                 ]
             }
+        ],
+        "software": [{
+                "Windows": [{
+                        "model": "10 Home",
+                        "price": 777
+                    },
+                    {
+                        "model": "10 PRO",
+                        "price": 999
+                    },
+                    {
+                        "model": "11PRO",
+                        "price": 1125
+                    }
+                ]
+            },
+            {
+                "Office": [{
+                        "model": "10 Home",
+                        "price": 777
+                    },
+                    {
+                        "model": "10 PRO",
+                        "price": 999
+                    },
+                    {
+                        "model": "11PRO",
+                        "price": 1125
+                    }
+                ]
+            }
         ]
     }
-
 }
+

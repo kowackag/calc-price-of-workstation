@@ -5,12 +5,13 @@ import {ItemContext, UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
 
 import Button from './../Button/Button'
+import EditableComponent from '../EditableComponent/EditableComponent.js';
 
 import StyledWorkstationTable from './WorkstationTable.styled';
 
 
 const WorkstationTable = ({isSorted, text}) => {
-    console.log(text)
+    
     const componentsList = useContext(ItemContext);
     const updateContext = useContext(UpdateContext);
     
@@ -24,16 +25,18 @@ const WorkstationTable = ({isSorted, text}) => {
             .then(data=>setCategories(data))
     },[]);
 
+    const [editableComponent, setEditableComponent] = useState(null)
+
     const deleteItem = e => {
         e.preventDefault();
         const id =  e.target.dataset.id;
         updateContext(id, 'remove')
     }
 
-    const updateItem = e => {
+    const updateItem = (e, item) => {
         e.preventDefault();
-        const id =  e.target.dataset.id;
-        updateContext(id, 'update')
+        setEditableComponent(item);
+        updateContext(editableComponent, 'update');
     }
 
     const getSumPriceByCategory = (arr, cat) => {
@@ -44,46 +47,53 @@ const WorkstationTable = ({isSorted, text}) => {
         return arr.reduce((sum,{price})=>sum+Number(price),0).toFixed(2)
     }
 
+
     return (
-        <StyledWorkstationTable>
-                <thead>
-                    <tr>
-                        {columnsNames.map((name,ind)=><th key={ind}>{name}</th>)}
-                    </tr>
-                </thead>
-                <tbody>
-                {categories.map((cat,ind)=>(
-                    <React.Fragment key={ind}>
-                        {isSorted && <tr>
-                            <th colSpan="3">{cat}</th>
-                            <th></th>  
-                            <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
-                        </tr>}
-                        {componentsList.filter(({type, model})=>type.includes(text)|| model.includes(text))
-                        .filter(({category})=>category === cat)
-                        .map(({id, type, model, category, price})=>(
-                        <tr key={id}>
-                            <td>{type}</td>
-                            <td>{model}</td>
-                            <td>{category}</td>
-                            <td>{`${price} PLN`}</td>
-                            <td>{
-                                <>
-                                    <Button onClick={deleteItem} id={id}>usuń</Button>
-                                    <Button onClick={updateItem} id={id}>zmień</Button>                                
-                                </>
-                            }</td>
-                        </tr>))}
-                    </React.Fragment>)
-                )}
-                </tbody>
-                <tfoot>
-                    <tr> 
-                        <td colSpan="4">Łączny koszt</td>
-                        <td>{`${getSumPrice(componentsList)} PLN`}</td>
-                    </tr>
-                </tfoot>
-        </StyledWorkstationTable>
+        <>
+            <StyledWorkstationTable>
+                <table>
+                    <thead>
+                        <tr>
+                            {columnsNames.map((name,ind)=><th key={ind}>{name}</th>)}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {categories.map((cat,ind)=>(
+                        <React.Fragment key={ind}>
+                            {isSorted && <tr>
+                                <th colSpan="3">{cat}</th>
+                                <th></th>  
+                                <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
+                            </tr>}
+                            {componentsList.filter(({type, model})=>type.includes(text)|| model.includes(text))
+                            .filter(({category})=>category === cat)
+                            .map((item)=>(
+                            
+                            <tr key={item.id} >
+                                <td>{item.type}</td>
+                                <td>{item.model}</td>
+                                <td>{item.category}</td>
+                                <td>{`${item.price} PLN`}</td>
+                                <td>{
+                                    <>
+                                        <Button onClick={deleteItem} id={item.id}>usuń</Button>
+                                        <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
+                                    </>
+                                }</td>
+                            </tr>))}
+                        </React.Fragment>)
+                    )}
+                    </tbody>
+                    <tfoot>
+                        <tr> 
+                            <td colSpan="4">Łączny koszt</td>
+                            <td>{`${getSumPrice(componentsList)} PLN`}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                {editableComponent && <EditableComponent content={editableComponent} setEditableComponent={setEditableComponent}/>}
+            </StyledWorkstationTable>
+        </>
     )
 }
 

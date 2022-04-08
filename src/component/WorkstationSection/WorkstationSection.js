@@ -20,7 +20,7 @@ const WorkstatnionSection = () => {
             : <> 
                 <label>Szukaj</label>
                 <Input onChange={e=>setText(e.target.value)}/>
-                <div> 
+                <div className="sorted-block"> 
                     <label htmlFor="sorted">Sortuj wg kategorii</label>
                     <input id="sorted" type="checkbox" onClick={(()=>setIsSorted(!isSorted))}/>
                 </div>

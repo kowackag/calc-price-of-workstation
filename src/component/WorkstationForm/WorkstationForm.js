@@ -25,7 +25,10 @@ const WorkstationForm = () => {
     const [state, setState] =  useState(init);
     const {category, type, model, price, info} = state;
     const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState();
     const [err, setErr] = useState({});
+
+    // const kat = products && Object.keys(products);
 
     const {
         category: errCategory,
@@ -41,22 +44,34 @@ const WorkstationForm = () => {
             .then(data=>setCategories(data))
     },[]);
 
+    useEffect(() => {
+        loadProductsFromAPI('products')
+            .then(item=>item)
+            // .then(el=>console.log(Object.values(el)))
+            .then(data=>setProducts(data))
+    },[]);
+
+
     const updateComponentList = useContext(UpdateContext)
 
     const changeValue = e => {
         e.preventDefault(); 
+        if(category === "oprogramowanie") {
+        }
         setState({...state, [e.target.name]: e.target.value})
+
     }
     
     const setValue = e => {
         e.preventDefault();
+        
         setState({...state, category: e.target.dataset.code})
+      
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = validateData(state);
-        console.log(errors)
         setErr(errors)
         if (Object.keys(errors).length === 0) {
             updateComponentList(state, 'add');

@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
-const StyledWorkstationTable = styled.table`
-
-    table-layout: fixed;
-    width: 100%;
-    border-collapse:collapse;
-    text-align: center;
-    font-size:1.4rem;
+const StyledWorkstationTable = styled.div`
+    margin:0;
+    padding:0;
+    position: relative;
+        & table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse:collapse;
+            text-align: center;
+            font-size:1.4rem;
+        }
 
         & tr {
             height: 5rem;

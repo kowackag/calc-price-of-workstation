@@ -5,15 +5,16 @@ const StyledSubmit = styled.button`
     display: block;
     padding: 1rem 5rem;
     margin: 2rem auto;
-    border: 1px solid rgb(var(--color-line));
-    background-color: rgba(var(--color-alfa), 0.1);
+    border: 1px solid rgb(var(--color-alfa));
+    background-color: white;
     color: rgb(var(--color-alfa));
     font-weight: bold;
     text-align: center;
+    text-transform:uppercase;
     cursor: pointer;
    
      &::before {
-        content: 'Dodaj';
+        content: '${props=>props.children}';
         position: absolute;
         top:0;
         bottom:0;

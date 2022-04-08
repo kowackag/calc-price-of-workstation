@@ -12,22 +12,18 @@ const StyledWorkstatnionSection = styled.article`
     & p { 
         font-style: italic;
     }
-    & > label {
-        font-style: italic;
-        font-size: 1.5rem;
-    }
 
-    & div {
+    & .sorted-block {
         text-align: end;
         padding: 0.5rem 2rem;
     }
-    & div > label {
+    & .sorted-block > label {
         margin-right: 1rem;
         font-size: 1.3rem;
         font-style: italic;
     }
 
-    & div > input {
+    & #sorted {
         width: 1rem;
         height: 1rem;
         font-size: 1rem;
