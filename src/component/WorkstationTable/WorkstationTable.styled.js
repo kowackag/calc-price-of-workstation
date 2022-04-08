@@ -1,21 +1,12 @@
 import styled from 'styled-components';
 
-const StyledWorkstationTable = styled.article`
-    padding: 6rem;
-    border: 1px solid rgb(var(--color-line));
-    border-top: 3px solid rgb(var(--color-alfa));
+const StyledWorkstationTable = styled.table`
 
-    & h2 { 
-        margin-bottom: 2rem;
-    }
-
-    & table {
-        margin: 0 auto;
-        width: 100%;
-        border: none;
-        border: solid 1px rgba(var(--color-line), .6);
-        border-collapse:collapse;
-        text-align: center;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse:collapse;
+    text-align: center;
+    font-size:1.4rem;
 
         & tr {
             height: 5rem;
@@ -40,14 +31,21 @@ const StyledWorkstationTable = styled.article`
                 text-align: end;
             }
             & td {
-                padding: 0 2rem;
+                padding: 0 1rem;
             }
 
             & td:first-child {
                 text-align: start;
             }
         }
-    }
+
+        & tfoot {
+            & td:last-child {
+                font-weight: bold;
+                font-size:2.6rem;
+            }
+        }
+    
 `
 
 export default StyledWorkstationTable;

@@ -1,15 +1,17 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
-const DefaultStyledButton = styled.div`
-    grid-column: 1/2;
-    padding: 1rem;
+const StyledButton = styled.button`
+    position: relative;
+    display: inline-block;
+    margin: 0.3rem;
+    padding: 0.8rem;
+    min-width: 6rem;
     border: 1px solid rgb(var(--color-line));
     background-color: white;
-    color: rgb(var(--color-font));
-    font-family: "Roboto", Verdana, sans-serif;
     font-weight: bold;
     text-align: center;
-    position: relative;
+    
+    color: rgb(var(--color-alfa));
     cursor: pointer;
     &::before {
         content: '${props=>props.children}';
@@ -18,9 +20,9 @@ const DefaultStyledButton = styled.div`
         bottom:0;
         left:0;
         right:0;
-        padding:1rem;
+        padding:0.8rem;
         border: none;
-        background-color: rgb(var(--color-font));
+        background-color: rgb(var(--color-alfa));
         color: white;
         opacity:0;
         transition: opacity 0.6s ease-out; 
@@ -30,7 +32,5 @@ const DefaultStyledButton = styled.div`
         opacity:1;
     }
 `
-
-const StyledButton = styled(DefaultStyledButton)(props=>props.style);
 
 export default StyledButton;
