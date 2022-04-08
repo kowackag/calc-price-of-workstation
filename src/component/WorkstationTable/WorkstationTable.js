@@ -59,7 +59,8 @@ const WorkstationTable = ({isSorted, text}) => {
                             <th></th>  
                             <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
                         </tr>}
-                        {componentsList.filter(({category})=>category === cat)
+                        {componentsList.filter(({type, model})=>type.includes(text)|| model.includes(text))
+                        .filter(({category})=>category === cat)
                         .map(({id, type, model, category, price})=>(
                         <tr key={id}>
                             <td>{type}</td>

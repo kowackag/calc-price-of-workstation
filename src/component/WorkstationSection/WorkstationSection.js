@@ -1,13 +1,10 @@
 import React, {useState, useContext} from 'react';
 
-import {ItemContext, UpdateContext} from '../context.js';
-
-import StyledWorkstationSection from './WorkstationSection.styled';
-
+import {ItemContext} from '../context.js';
 import WorkstationTable from '../WorkstationTable/WorkstationTable.js';
 
-import Checkbox from '../Checkbox/Checkbox.js';
-
+import Input from '../Input/Input.js';
+import StyledWorkstationSection from './WorkstationSection.styled';
 
 const WorkstatnionSection = () => {
     
@@ -21,7 +18,8 @@ const WorkstatnionSection = () => {
             {!componentsList.length ?
             <p>Brak wybranych elementów zestawu</p>
             : <> 
-                <input onChange={e=>setText(e.target.value)}/>
+                <label>Szukaj</label>
+                <Input onChange={e=>setText(e.target.value)}/>
                 <div> 
                     <label htmlFor="sorted">Sortuj wg kategorii</label>
                     <input id="sorted" type="checkbox" onClick={(()=>setIsSorted(!isSorted))}/>

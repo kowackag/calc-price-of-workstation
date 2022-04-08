@@ -12,6 +12,10 @@ const StyledWorkstatnionSection = styled.article`
     & p { 
         font-style: italic;
     }
+    & > label {
+        font-style: italic;
+        font-size: 1.5rem;
+    }
 
     & div {
         text-align: end;
