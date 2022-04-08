@@ -21,17 +21,16 @@ export const validateData =({category, type, model, price, performer}) => {
         errors = {...errors, ...copyErrors};
     }
     if (!performer) {
-        const copyErrors = {type: 'Wpisz wykon'};
+        const copyErrors = {performer: 'Wpisz wykonawcę'};
         errors = {...errors, ...copyErrors};
     }
     return errors;
 }
 
-export const validateSummary =({performer}) => {
-    console.log(performer)
+export const validateSummary = ({performer}) => {
     let errors = {};
     if (!performer) {
-        const copyErrors = {type: 'Wpisz wykonawcę'};
+        const copyErrors = {performer: 'Wpisz wykonawcę'};
         errors = {...errors, ...copyErrors};
     }
     return errors;

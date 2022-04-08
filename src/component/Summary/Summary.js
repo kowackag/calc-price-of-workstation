@@ -22,7 +22,7 @@ const Summary = () => {
 
     const [err, setErr] = useState({});
     const {performer: errPerformer} = err;
-    console.log(errPerformer)
+
     const changeValue = e => {
         e.preventDefault(); 
         setData({...data, [e.target.name]: e.target.value})
@@ -41,18 +41,18 @@ const Summary = () => {
     return (
         <StyledSummary>
             <h2>Wysyłanie zamówienia:</h2>
-            
             <form onSubmit={sentOrder}>
                 <div>
                     <Input name="performer" value={performer} onChange={changeValue} placeholder="wykonawca"/> 
-                    {err && <Error err={errPerformer}/>}  
+                    {errPerformer && <Error err={errPerformer}/>}  
                 </div>
                 <div>
                     <Input type="textarea" name="info" value={info} onChange={changeValue} placeholder="uwagi"/>
                 </div>
                 <div>
+                    <Button type="button">Drukuj</Button>
                     <Button type="click">Wyślij</Button>
-                    {/* <Button type="button">Drukuj zamówienie</Button> */}
+                    
                 </div>
                 
             </form>

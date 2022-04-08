@@ -4,10 +4,11 @@ const StyledSummary = styled.article`
     width: 40%;
     padding: 2rem;
     background-color: rgb(var(--color-alfa));
+    text-align: center;
     
     & h2 {
         color: white;
-        font-size: 2.2rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
         text-align: center;
     }
@@ -17,8 +18,8 @@ const StyledSummary = styled.article`
             margin-bottom: 3rem;
             /* text-align: center; */
             & > button {
-                padding-left: 4rem;
-                padding-right: 4rem;
+                padding-left: 3rem;
+                padding-right: 3rem;
             }
         }
     }
