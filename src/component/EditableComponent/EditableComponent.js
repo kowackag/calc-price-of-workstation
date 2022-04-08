@@ -21,7 +21,7 @@ const EditableComponent = ({content, setEditableComponent}) => {
         e.preventDefault(); 
         setUpdatedComponent({...updatedComponent, [e.target.name]: e.target.value})
         updateContext(updatedComponent, 'update');
-        setEditableComponent(null)
+        setEditableComponent(null);
     }
 
 
@@ -29,7 +29,7 @@ const EditableComponent = ({content, setEditableComponent}) => {
          <StyledEditableComponent> 
             <form onSubmit={saveComponent}> 
                 <div>
-                    <label htmFor="type">Typ</label> 
+                    <label>Typ</label> 
                     <Input id="type" name="type" value={updatedComponent.type} onChange={changeValue}/>                           
                 </div>
                 <div>

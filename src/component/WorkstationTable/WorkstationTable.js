@@ -27,6 +27,9 @@ const WorkstationTable = ({isSorted, text}) => {
 
     const [editableComponent, setEditableComponent] = useState(null)
 
+    const filteredComponentList = componentsList.filter(({type, model, category, price})=>type.includes(text)|| model.includes(text) || category.includes(text) || price.includes(text))
+
+
     const deleteItem = e => {
         e.preventDefault();
         const id =  e.target.dataset.id;
@@ -36,7 +39,6 @@ const WorkstationTable = ({isSorted, text}) => {
     const updateItem = (e, item) => {
         e.preventDefault();
         setEditableComponent(item);
-        updateContext(editableComponent, 'update');
     }
 
     const getSumPriceByCategory = (arr, cat) => {
@@ -46,7 +48,6 @@ const WorkstationTable = ({isSorted, text}) => {
     const getSumPrice = (arr) => {
         return arr.reduce((sum,{price})=>sum+Number(price),0).toFixed(2)
     }
-
 
     return (
         <>
@@ -65,22 +66,20 @@ const WorkstationTable = ({isSorted, text}) => {
                                 <th></th>  
                                 <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
                             </tr>}
-                            {componentsList.filter(({type, model})=>type.includes(text)|| model.includes(text))
-                            .filter(({category})=>category === cat)
+                            {filteredComponentList.filter(({category})=>category === cat)
                             .map((item)=>(
-                            
-                            <tr key={item.id} >
-                                <td>{item.type}</td>
-                                <td>{item.model}</td>
-                                <td>{item.category}</td>
-                                <td>{`${item.price} PLN`}</td>
-                                <td>{
-                                    <>
-                                        <Button onClick={deleteItem} id={item.id}>usuń</Button>
-                                        <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
-                                    </>
-                                }</td>
-                            </tr>))}
+                                <tr key={item.id} >
+                                    <td>{item.type}</td>
+                                    <td>{item.model}</td>
+                                    <td>{item.category}</td>
+                                    <td>{`${item.price} PLN`}</td>
+                                    <td>{
+                                        <>
+                                            <Button onClick={deleteItem} id={item.id}>usuń</Button>
+                                            <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
+                                        </>
+                                    }</td>
+                                </tr>))}
                         </React.Fragment>)
                     )}
                     </tbody>
@@ -88,6 +87,9 @@ const WorkstationTable = ({isSorted, text}) => {
                         <tr> 
                             <td colSpan="4">Łączny koszt</td>
                             <td>{`${getSumPrice(componentsList)} PLN`}</td>
+                        </tr>
+                        <tr> 
+                            <td colSpan="5">{`Ilość pozycji: ${componentsList.length}`}</td>
                         </tr>
                     </tfoot>
                 </table>

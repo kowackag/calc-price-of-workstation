@@ -5,6 +5,7 @@ import { useStorage } from './Hooks';
 
 import WorkstationForm from './WorkstationForm/WorkstationForm';
 import WorkstationSection from './WorkstationSection/WorkstationSection';
+import Summary from './Summary/Summary';
 
 import StyledApp from './App.styled';
 
@@ -48,7 +49,7 @@ const App = () => {
           <h1>Konfigurator stanowiska komputerowego</h1>
           <div>
               <WorkstationForm/>
-              <section style={{width: "40%", padding: "0 9rem", backgroundColor: "rgb(10,8,110)", color: "white"}}>Suma:</section>
+              <Summary/>
           </div>  
           <WorkstationSection/>
         </StyledApp>

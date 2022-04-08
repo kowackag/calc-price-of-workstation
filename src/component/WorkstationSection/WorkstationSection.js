@@ -6,7 +6,7 @@ import WorkstationTable from '../WorkstationTable/WorkstationTable.js';
 import Input from '../Input/Input.js';
 import StyledWorkstationSection from './WorkstationSection.styled';
 
-const WorkstatnionSection = () => {
+const WorkstationSection = () => {
     
     const componentsList = useContext(ItemContext);
     const [text, setText] = useState('')
@@ -18,8 +18,7 @@ const WorkstatnionSection = () => {
             {!componentsList.length ?
             <p>Brak wybranych elementów zestawu</p>
             : <> 
-                <label>Szukaj</label>
-                <Input onChange={e=>setText(e.target.value)}/>
+                <Input onChange={e=>setText(e.target.value)} placeholder="Szukaj"/>
                 <div className="sorted-block"> 
                     <label htmlFor="sorted">Sortuj wg kategorii</label>
                     <input id="sorted" type="checkbox" onClick={(()=>setIsSorted(!isSorted))}/>
@@ -31,4 +30,4 @@ const WorkstatnionSection = () => {
 }
 
 
-export default WorkstatnionSection; 
+export default WorkstationSection; 

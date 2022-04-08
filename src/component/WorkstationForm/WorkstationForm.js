@@ -47,7 +47,6 @@ const WorkstationForm = () => {
     useEffect(() => {
         loadProductsFromAPI('products')
             .then(item=>item)
-            // .then(el=>console.log(Object.values(el)))
             .then(data=>setProducts(data))
     },[]);
 
@@ -56,17 +55,12 @@ const WorkstationForm = () => {
 
     const changeValue = e => {
         e.preventDefault(); 
-        if(category === "oprogramowanie") {
-        }
         setState({...state, [e.target.name]: e.target.value})
-
     }
     
     const setValue = e => {
         e.preventDefault();
-        
         setState({...state, category: e.target.dataset.code})
-      
     }
 
     const handleSubmit = (e) => {
@@ -82,7 +76,7 @@ const WorkstationForm = () => {
     const inputFields = [
         {name: 'type', value: type, type: 'string', description: 'Typ', err: errType},
         {name: 'model', value: model, type: 'string', description: 'Model', err: errModel},
-        {name: 'price', value: price, type: 'number', description: 'Cena', min: 0, err: errPrice},
+        {name: 'price', value: price, type: 'number', step:".01", description: 'Cena', min: 0, err: errPrice},
         {name: 'info', value: info, type: 'textarea', description: 'Uwagi'}
     ]
 
@@ -97,7 +91,7 @@ const WorkstationForm = () => {
                 err={errCategory}
             />
             <div>
-                {inputFields.map(({name, value, type, description, min, err})=>(
+                {inputFields.map(({name, value, type, description, min, step, err})=>(
                     <div key={name}>
                         <label htmlFor={name}>{description}</label>
                         <Input 
@@ -106,6 +100,7 @@ const WorkstationForm = () => {
                             name={name} 
                             value={value} 
                             min={min}
+                            step={step}
                             onChange={changeValue}
                         />
                         {err && <Error err={err}/>}

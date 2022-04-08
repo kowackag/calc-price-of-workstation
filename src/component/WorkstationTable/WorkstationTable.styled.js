@@ -44,9 +44,17 @@ const StyledWorkstationTable = styled.div`
         }
 
         & tfoot {
-            & td:last-child {
+            font-size:2rem;
+            & tr:first-child {
+                & td:last-child {
+                    font-weight: bold;
+                    font-size:2.6rem;
+                }
+            }
+            & tr:last-child {
+                color: rgb(var(--color-alfa));
+                background-color:white;
                 font-weight: bold;
-                font-size:2.6rem;
             }
         }
     

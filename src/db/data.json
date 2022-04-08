@@ -1,91 +1,252 @@
 {
-
-    "orders": [
-
-    ],
-
-    "categories": ["komputer", "urządząnie peryferyjne", "oprogramowanie", "inne"],
-    "products":
-
-    {
-        "urządząnia peryferyjne": [{
-                "myszka": [{
-                        "model": "Logitech M705 Marathon",
-                        "price": 169
-                    },
-                    {
-                        "model": "Logitech MX Vertical Ergonomic",
-                        "price": 449
-                    },
-                    {
-                        "model": "HP Z5000",
-                        "price": 99
-                    },
-                    {
-                        "model": "Microsoft 1850",
-                        "price": 69
-                    },
-                    {
-                        "model": "Microsoft Bluetooth Mobile Mouse 3600",
-                        "price": 129
-                    }
-                ]
-            },
-            {
-                "klawiatura": [{
-                        "model": "Logitech M705 Marathon",
-                        "price": 169
-                    },
-                    {
-                        "model": "Logitech MX Vertical Ergonomic",
-                        "price": 449
-                    },
-                    {
-                        "model": "HP Z5000",
-                        "price": 99
-                    },
-                    {
-                        "model": "Microsoft 1850",
-                        "price": 69
-                    },
-                    {
-                        "model": "Microsoft Bluetooth Mobile Mouse 3600",
-                        "price": 129
-                    }
-                ]
-            }
-        ],
-        "software": [{
-                "Windows": [{
-                        "model": "10 Home",
-                        "price": 777
-                    },
-                    {
-                        "model": "10 PRO",
-                        "price": 999
-                    },
-                    {
-                        "model": "11PRO",
-                        "price": 1125
-                    }
-                ]
-            },
-            {
-                "Office": [{
-                        "model": "10 Home",
-                        "price": 777
-                    },
-                    {
-                        "model": "10 PRO",
-                        "price": 999
-                    },
-                    {
-                        "model": "11PRO",
-                        "price": 1125
-                    }
-                ]
-            }
+  "categories": [
+    "komputer",
+    "urządząnie peryferyjne",
+    "oprogramowanie",
+    "inne"
+  ],
+  "products": {
+    "urządząnia peryferyjne": [
+      {
+        "myszka": [
+          {
+            "model": "Logitech M705 Marathon",
+            "price": 169
+          },
+          {
+            "model": "Logitech MX Vertical Ergonomic",
+            "price": 449
+          },
+          {
+            "model": "HP Z5000",
+            "price": 99
+          },
+          {
+            "model": "Microsoft 1850",
+            "price": 69
+          },
+          {
+            "model": "Microsoft Bluetooth Mobile Mouse 3600",
+            "price": 129
+          }
         ]
+      },
+      {
+        "klawiatura": [
+          {
+            "model": "Logitech M705 Marathon",
+            "price": 169
+          },
+          {
+            "model": "Logitech MX Vertical Ergonomic",
+            "price": 449
+          },
+          {
+            "model": "HP Z5000",
+            "price": 99
+          },
+          {
+            "model": "Microsoft 1850",
+            "price": 69
+          },
+          {
+            "model": "Microsoft Bluetooth Mobile Mouse 3600",
+            "price": 129
+          }
+        ]
+      }
+    ],
+    "software": [
+      {
+        "Windows": [
+          {
+            "model": "10 Home",
+            "price": 777
+          },
+          {
+            "model": "10 PRO",
+            "price": 999
+          },
+          {
+            "model": "11PRO",
+            "price": 1125
+          }
+        ]
+      },
+      {
+        "Office": [
+          {
+            "model": "10 Home",
+            "price": 777
+          },
+          {
+            "model": "10 PRO",
+            "price": 999
+          },
+          {
+            "model": "11PRO",
+            "price": 1125
+          }
+        ]
+      }
+    ]
+  },
+  "orders": [
+    {
+      "performer": "",
+      "info": "",
+      "components": [
+        {
+          "id": "24781107-9904-434f-a456-4c7a60698c3d",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "focus",
+          "price": "666",
+          "info": ""
+        },
+        {
+          "id": "2ff1083a-be1b-4b74-8610-29ddb098b944",
+          "category": "inne",
+          "type": "pendrive",
+          "model": "focus",
+          "price": "50",
+          "info": ""
+        },
+        {
+          "id": "3b95caa1-e94e-455d-8924-75e024ebb9df",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "logitech",
+          "price": "60.05",
+          "info": ""
+        },
+        {
+          "id": "476f8619-319d-4123-8086-a05dec4b1397",
+          "category": "komputer",
+          "type": "pendrive",
+          "model": "ddd",
+          "price": "666",
+          "info": ""
+        }
+      ],
+      "id": 1
+    },
+    {
+      "performer": "ddd",
+      "info": "",
+      "components": [
+        {
+          "id": "24781107-9904-434f-a456-4c7a60698c3d",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "focus",
+          "price": "666",
+          "info": ""
+        },
+        {
+          "id": "2ff1083a-be1b-4b74-8610-29ddb098b944",
+          "category": "inne",
+          "type": "pendrive",
+          "model": "focus",
+          "price": "50",
+          "info": ""
+        },
+        {
+          "id": "3b95caa1-e94e-455d-8924-75e024ebb9df",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "logitech",
+          "price": "60.05",
+          "info": ""
+        },
+        {
+          "id": "476f8619-319d-4123-8086-a05dec4b1397",
+          "category": "komputer",
+          "type": "pendrive",
+          "model": "ddd",
+          "price": "666",
+          "info": ""
+        }
+      ],
+      "id": 2
+    },
+    {
+      "performer": "ddd",
+      "info": "",
+      "components": [
+        {
+          "id": "24781107-9904-434f-a456-4c7a60698c3d",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "focus",
+          "price": "666",
+          "info": ""
+        },
+        {
+          "id": "2ff1083a-be1b-4b74-8610-29ddb098b944",
+          "category": "inne",
+          "type": "pendrive",
+          "model": "focus",
+          "price": "50",
+          "info": ""
+        },
+        {
+          "id": "3b95caa1-e94e-455d-8924-75e024ebb9df",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "logitech",
+          "price": "60.05",
+          "info": ""
+        },
+        {
+          "id": "476f8619-319d-4123-8086-a05dec4b1397",
+          "category": "komputer",
+          "type": "pendrive",
+          "model": "ddd",
+          "price": "666",
+          "info": ""
+        }
+      ],
+      "id": 3
+    },
+    {
+      "performer": "sss",
+      "info": "",
+      "components": [
+        {
+          "id": "24781107-9904-434f-a456-4c7a60698c3d",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "focus",
+          "price": "666",
+          "info": ""
+        },
+        {
+          "id": "2ff1083a-be1b-4b74-8610-29ddb098b944",
+          "category": "inne",
+          "type": "pendrive",
+          "model": "focus",
+          "price": "50",
+          "info": ""
+        },
+        {
+          "id": "3b95caa1-e94e-455d-8924-75e024ebb9df",
+          "category": "komputer",
+          "type": "głośniki",
+          "model": "logitech",
+          "price": "60.05",
+          "info": ""
+        },
+        {
+          "id": "476f8619-319d-4123-8086-a05dec4b1397",
+          "category": "komputer",
+          "type": "pendrive",
+          "model": "ddd",
+          "price": "666",
+          "info": ""
+        }
+      ],
+      "id": 4
     }
+  ]
 }
-
