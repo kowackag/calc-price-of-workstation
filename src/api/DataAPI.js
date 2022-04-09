@@ -30,7 +30,7 @@ export const loadProductsFromAPI = (name) => {
         }
     }
     const copyUrl = `${url}/${name}`;
-    return fetch(`${url}/${name}`, options)
+    return fetch(`${copyUrl}`, options)
             .then(resp => handleErrors(resp))
             .then(resp=>resp.json())
 }

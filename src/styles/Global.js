@@ -40,12 +40,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        width:100vw;
+        max-width:100vw;
         font-size: 10px;
     }
 
     body {
         max-width: 1000px;
+        width:100%;
         margin: auto;
         padding: 2rem;
         font-family: "Roboto", Verdana, sans-serif;

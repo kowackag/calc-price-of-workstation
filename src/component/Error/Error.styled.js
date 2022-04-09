@@ -4,7 +4,7 @@ const StyledError = styled.p`
     position: absolute;
     padding: 0 2rem;
     color: #e01010;
-    font-size: .9rem;
+    font-size: 1rem;
     font-style: italic;
 `
 export default StyledError;

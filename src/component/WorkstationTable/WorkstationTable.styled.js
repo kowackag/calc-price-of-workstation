@@ -21,6 +21,17 @@ const StyledWorkstationTable = styled.div`
         & thead, tfoot {
             background-color:rgb(var(--color-alfa));
             color: rgb(var(--color-beta)); 
+            & th { 
+                & > div {
+                    display: flex; 
+                    justify-content: center;
+                    align-items: center;
+                    & p {
+                    display:inline-block;
+                    margin-right: 1rem;
+                    }
+                }
+            }
         }
 
         & tbody {

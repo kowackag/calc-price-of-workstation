@@ -1,4 +1,4 @@
-export const validateData =({category, type, model, price, performer}) => {
+export const validateData =({category, type, model, price}) => {
     let errors = {};
     if (!category) {
         const copyErrors = {category: 'Wybierz Kategorię'};
@@ -18,10 +18,6 @@ export const validateData =({category, type, model, price, performer}) => {
     }
     if (!type) {
         const copyErrors = {type: 'Wpisz model produkty'};
-        errors = {...errors, ...copyErrors};
-    }
-    if (!performer) {
-        const copyErrors = {performer: 'Wpisz wykonawcę'};
         errors = {...errors, ...copyErrors};
     }
     return errors;

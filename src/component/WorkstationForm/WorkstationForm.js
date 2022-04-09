@@ -6,6 +6,7 @@ import {loadProductsFromAPI} from '../../api/DataAPI';
 import {validateData} from './../../validateData';
 
 import Dropdown from '../Dropdown/Dropdown.js';
+import Add from '../Add/Add';
 import Input from '../Input/Input.js';
 import Submit from '../Submit/Submit';
 import Error from '../Error/Error.js';
@@ -26,6 +27,7 @@ const WorkstationForm = () => {
     const {category, type, model, price, info} = state;
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState();
+
     const [err, setErr] = useState({});
 
     // const kat = products && Object.keys(products);
@@ -44,11 +46,12 @@ const WorkstationForm = () => {
             .then(data=>setCategories(data))
     },[]);
 
-    useEffect(() => {
-        loadProductsFromAPI('products')
-            .then(item=>item)
-            .then(data=>setProducts(data))
-    },[]);
+ 
+    // useEffect(() => {
+    //     loadProductsFromAPI()
+    //         .then(item=>item)
+    //         .then(data=>setProducts(data))
+    // },[]);
 
 
     const updateComponentList = useContext(UpdateContext)
@@ -63,19 +66,25 @@ const WorkstationForm = () => {
         setState({...state, category: e.target.dataset.code})
     }
 
+    const addCategory = () => {
+        
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = validateData(state);
-        setErr(errors)
+        setErr(errors);
+        console.log(err)
         if (Object.keys(errors).length === 0) {
+            console.log('opfdate')
             updateComponentList(state, 'add');
             setState(init);
         }
     }
 
     const inputFields = [
-        {name: 'type', value: type, type: 'string', description: 'Typ', err: errType},
-        {name: 'model', value: model, type: 'string', description: 'Model', err: errModel},
+        {name: 'type', value: type, type: 'string', description: 'Nazwa', err: errType},
+        {name: 'model', value: model, type: 'string', description: 'Opis', err: errModel},
         {name: 'price', value: price, type: 'number', step:".01", description: 'Cena', min: 0, err: errPrice},
         {name: 'info', value: info, type: 'textarea', description: 'Uwagi'}
     ]
@@ -89,7 +98,8 @@ const WorkstationForm = () => {
                 categ={categories ? categories : []} 
                 onChange={setValue}
                 err={errCategory}
-            />
+            /> 
+            <Add onClick={addCategory}/>
             <div>
                 {inputFields.map(({name, value, type, description, min, step, err})=>(
                     <div key={name}>

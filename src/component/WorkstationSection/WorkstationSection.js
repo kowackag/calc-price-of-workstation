@@ -10,7 +10,7 @@ const WorkstationSection = () => {
     
     const componentsList = useContext(ItemContext);
     const [text, setText] = useState('')
-    const [isSorted, setIsSorted] = useState(false);
+    const [isCategorised, setIsCategorised] = useState(false);
 
     return (
         <StyledWorkstationSection>
@@ -20,10 +20,10 @@ const WorkstationSection = () => {
             : <> 
                 <Input onChange={e=>setText(e.target.value)} placeholder="Szukaj"/>
                 <div className="sorted-block"> 
-                    <label htmlFor="sorted">Sortuj wg kategorii</label>
-                    <input id="sorted" type="checkbox" onClick={(()=>setIsSorted(!isSorted))}/>
+                    <label htmlFor="sorted">Szereguj wg kategorii</label>
+                    <input id="sorted" type="checkbox" onClick={(()=>setIsCategorised(!isCategorised))}/>
                 </div>
-                <WorkstationTable isSorted={isSorted} text={text}/>
+                <WorkstationTable isCategorised={isCategorised} text={text}/>
             </>}
         </StyledWorkstationSection>
     )

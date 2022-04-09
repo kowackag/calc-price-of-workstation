@@ -16,7 +16,10 @@ const StyledSummary = styled.article`
     & form {      
         & div {
             margin-bottom: 3rem;
-            /* text-align: center; */
+
+            & input+p {
+                position: relative;
+            }
             & > button {
                 padding-left: 3rem;
                 padding-right: 3rem;

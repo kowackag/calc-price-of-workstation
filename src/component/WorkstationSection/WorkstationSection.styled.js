@@ -9,9 +9,9 @@ const StyledWorkstatnionSection = styled.article`
         margin-bottom: 2rem;
     }
 
-    & p { 
+    /* & p { 
         font-style: italic;
-    }
+    } */
 
     & .sorted-block {
         text-align: end;

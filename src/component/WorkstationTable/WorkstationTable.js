@@ -6,17 +6,16 @@ import {loadProductsFromAPI} from '../../api/DataAPI';
 
 import Button from './../Button/Button'
 import EditableComponent from '../EditableComponent/EditableComponent.js';
+import SortBlock from '../SortBlock/SortBlock.js';
 
 import StyledWorkstationTable from './WorkstationTable.styled';
 
-
-const WorkstationTable = ({isSorted, text}) => {
+const WorkstationTable = ({isCategorised, text}) => {
     
     const componentsList = useContext(ItemContext);
     const updateContext = useContext(UpdateContext);
+    const [editableComponent, setEditableComponent] = useState(null);
     
-    const columnsNames = ["Nazwa", "Model", "Kategoria", "Cena", ""]
-
     const [categories, setCategories] = useState([]);
    
     useEffect(() => {
@@ -25,10 +24,31 @@ const WorkstationTable = ({isSorted, text}) => {
             .then(data=>setCategories(data))
     },[]);
 
-    const [editableComponent, setEditableComponent] = useState(null)
+    const [sortedWay, setSortedWay] = useState('');
 
-    const filteredComponentList = componentsList.filter(({type, model, category, price})=>type.includes(text)|| model.includes(text) || category.includes(text) || price.includes(text))
+    const filteredComponentList = componentsList.filter(({type, model, category, price})=>type.includes(text) || model.includes(text) || category.includes(text) || price.includes(text));
+        
+    const sortComponentList = (arr, element) => {
+        const sortUp = (property) => (a,b) => {
+            return a[property].localeCompare(b[property]);
+        }
+        const sortDown = (property) => (a,b) => {
+            return b[property].localeCompare(a[property]);
+        }
+        switch (element.type) {
+            case "up": {
+                return arr.sort(sortUp(element.name))
+            }
+            case "down": {
+                return arr.sort(sortDown(element.name))
+            }
+            default: {
+                return arr;
+            }
+        }
+    }
 
+    const sortedComponentList = sortComponentList(filteredComponentList, sortedWay);
 
     const deleteItem = e => {
         e.preventDefault();
@@ -41,6 +61,22 @@ const WorkstationTable = ({isSorted, text}) => {
         setEditableComponent(item);
     }
 
+    const sortUp = (e) => {
+        e.preventDefault();
+        setSortedWay({ ...sortedWay,
+            name: e.currentTarget.dataset.name,
+            type: "up"
+        })
+    }
+
+    const sortDown = (e) => {
+        e.preventDefault();
+        setSortedWay({ ...sortedWay, 
+            name: e.currentTarget.dataset.name,
+            type: "down"
+        })
+    }
+
     const getSumPriceByCategory = (arr, cat) => {
         return arr.filter(({category})=>category === cat).reduce((sum,{price})=>sum+Number(price),0).toFixed(2)
     }
@@ -49,24 +85,31 @@ const WorkstationTable = ({isSorted, text}) => {
         return arr.reduce((sum,{price})=>sum+Number(price),0).toFixed(2)
     }
 
+    const columnsNames = [
+        {name: "type", desc: "Nazwa"},
+        {name: "model", desc: "Opis"},
+        {name: "category", desc: "Kategoria"},
+        {name: "price", desc: "Cena"},
+        {name: ""}
+    ]
+
     return (
-        <>
-            <StyledWorkstationTable>
-                <table>
-                    <thead>
-                        <tr>
-                            {columnsNames.map((name,ind)=><th key={ind}>{name}</th>)}
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {categories.map((cat,ind)=>(
-                        <React.Fragment key={ind}>
-                            {isSorted && <tr>
-                                <th colSpan="3">{cat}</th>
-                                <th></th>  
-                                <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
-                            </tr>}
-                            {filteredComponentList.filter(({category})=>category === cat)
+        <StyledWorkstationTable>
+            <table>
+                <thead>
+                    <tr>
+                        {columnsNames.map(({name, desc})=><th key={name}><div><p>{desc}</p>{name&&<SortBlock sortUp={sortUp} sortDown={sortDown} name={name}/>}</div> </th>)}
+                    </tr>
+                </thead>
+                <tbody>
+                {isCategorised ? categories.map((cat,ind)=>(
+                    <React.Fragment key={ind}>
+                        {<tr>
+                            <th colSpan="3">{cat}</th>
+                            <th></th>  
+                            <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
+                        </tr>}
+                        {sortedComponentList.filter(({category})=>category === cat)
                             .map((item)=>(
                                 <tr key={item.id} >
                                     <td>{item.type}</td>
@@ -80,27 +123,38 @@ const WorkstationTable = ({isSorted, text}) => {
                                         </>
                                     }</td>
                                 </tr>))}
-                        </React.Fragment>)
-                    )}
-                    </tbody>
-                    <tfoot>
-                        <tr> 
-                            <td colSpan="4">Łączny koszt</td>
-                            <td>{`${getSumPrice(componentsList)} PLN`}</td>
-                        </tr>
-                        <tr> 
-                            <td colSpan="5">{`Ilość pozycji: ${componentsList.length}`}</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                {editableComponent && <EditableComponent content={editableComponent} setEditableComponent={setEditableComponent}/>}
-            </StyledWorkstationTable>
-        </>
+                        </React.Fragment>)) 
+                    : sortedComponentList
+                        .map((item)=>(
+                            <tr key={item.id} >
+                                <td>{item.type}</td>
+                                <td>{item.model}</td>
+                                <td>{item.category}</td>
+                                <td>{`${item.price} PLN`}</td>
+                                <td>{<>
+                                        <Button onClick={deleteItem} id={item.id}>usuń</Button>
+                                        <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
+                                    </>
+                                }</td>
+                            </tr>))}
+                </tbody>
+                <tfoot>
+                    <tr> 
+                        <td colSpan="4">Łączny koszt</td>
+                        <td>{`${getSumPrice(componentsList)} PLN`}</td>
+                    </tr>
+                    <tr> 
+                        <td colSpan="5">{`Ilość pozycji: ${componentsList.length}`}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            {editableComponent && <EditableComponent content={editableComponent} setEditableComponent={setEditableComponent}/>}
+        </StyledWorkstationTable>
     )
 }
 
 WorkstationTable.propTypes = {
-    isSorted: PropTypes.bool.isRequired
+    isCategorised: PropTypes.bool.isRequired
 }
 
 export default WorkstationTable; 

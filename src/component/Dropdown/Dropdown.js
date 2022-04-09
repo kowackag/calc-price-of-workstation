@@ -5,7 +5,6 @@ import Error from './../Error/Error';
 import StyledDropdown from './Dropdown.styled';
 
 const Dropdown = ({name, value, categ, onChange, err}) => {
-    
     const [isActive, setIsActive] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
     const [isOnMouse, setIsOnMouse] = useState(false);
@@ -28,6 +27,7 @@ const Dropdown = ({name, value, categ, onChange, err}) => {
                 onFocus={()=> {
                 setIsFocus(true)}} 
                 onBlur={handleOnBlur} 
+                onChange={onChange}
                 readOnly={true}
             />
            
