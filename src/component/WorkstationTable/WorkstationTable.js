@@ -1,5 +1,9 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState, useRef, useContext} from 'react';
 import PropTypes from 'prop-types';
+import { useReactToPrint } from 'react-to-print';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPrint } from "@fortawesome/free-solid-svg-icons";
 
 import {ItemContext, UpdateContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
@@ -12,6 +16,7 @@ import StyledWorkstationTable from './WorkstationTable.styled';
 
 const WorkstationTable = ({isCategorised, text}) => {
     
+    const pdfExportComponent = useRef(null)
     const componentsList = useContext(ItemContext);
     const updateContext = useContext(UpdateContext);
     const [editableComponent, setEditableComponent] = useState(null);
@@ -92,64 +97,76 @@ const WorkstationTable = ({isCategorised, text}) => {
         {name: "price", desc: "Cena"},
         {name: ""}
     ]
+    const  handleExportWithComponent  = (event) => {
+        pdfExportComponent.current.save();
+    }
+
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
+
 
     return (
-        <StyledWorkstationTable>
-            <table>
-                <thead>
-                    <tr>
-                        {columnsNames.map(({name, desc})=><th key={name}><div><p>{desc}</p>{name&&<SortBlock sortUp={sortUp} sortDown={sortDown} name={name}/>}</div> </th>)}
-                    </tr>
-                </thead>
-                <tbody>
-                {isCategorised ? categories.map((cat,ind)=>(
-                    <React.Fragment key={ind}>
-                        {<tr>
-                            <th colSpan="3">{cat}</th>
-                            <th></th>  
-                            <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
-                        </tr>}
-                        {sortedComponentList.filter(({category})=>category === cat)
+        <>     
+            <Button onClick={handlePrint} notAnimated={true}><FontAwesomeIcon icon={faPrint}/></Button>
+            <StyledWorkstationTable ref={componentRef}>
+                <table >
+                    <thead>
+                        <tr>
+                            {columnsNames.map(({name, desc})=><th key={name}><div><p>{desc}</p>{name&&<SortBlock sortUp={sortUp} sortDown={sortDown} name={name}/>}</div> </th>)}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {isCategorised ? categories.map((cat,ind)=>(
+                        <React.Fragment key={ind}>
+                            {<tr>
+                                <th colSpan="3">{cat}</th>
+                                <th></th>  
+                                <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
+                            </tr>}
+                            {sortedComponentList.filter(({category})=>category === cat)
+                                .map((item)=>(
+                                    <tr key={item.id} >
+                                        <td>{item.type}</td>
+                                        <td>{item.model}</td>
+                                        <td>{item.category}</td>
+                                        <td>{`${item.price} PLN`}</td>
+                                        <td>{
+                                            <>
+                                                <Button onClick={deleteItem} id={item.id}>usuń</Button>
+                                                <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
+                                            </>
+                                        }</td>
+                                    </tr>))}
+                            </React.Fragment>)) 
+                        : sortedComponentList
                             .map((item)=>(
                                 <tr key={item.id} >
                                     <td>{item.type}</td>
                                     <td>{item.model}</td>
                                     <td>{item.category}</td>
                                     <td>{`${item.price} PLN`}</td>
-                                    <td>{
-                                        <>
+                                    <td>{<>
                                             <Button onClick={deleteItem} id={item.id}>usuń</Button>
                                             <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
                                         </>
                                     }</td>
                                 </tr>))}
-                        </React.Fragment>)) 
-                    : sortedComponentList
-                        .map((item)=>(
-                            <tr key={item.id} >
-                                <td>{item.type}</td>
-                                <td>{item.model}</td>
-                                <td>{item.category}</td>
-                                <td>{`${item.price} PLN`}</td>
-                                <td>{<>
-                                        <Button onClick={deleteItem} id={item.id}>usuń</Button>
-                                        <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
-                                    </>
-                                }</td>
-                            </tr>))}
-                </tbody>
-                <tfoot>
-                    <tr> 
-                        <td colSpan="4">Łączny koszt</td>
-                        <td>{`${getSumPrice(componentsList)} PLN`}</td>
-                    </tr>
-                    <tr> 
-                        <td colSpan="5">{`Ilość pozycji: ${componentsList.length}`}</td>
-                    </tr>
-                </tfoot>
-            </table>
-            {editableComponent && <EditableComponent content={editableComponent} setEditableComponent={setEditableComponent}/>}
-        </StyledWorkstationTable>
+                    </tbody>
+                    <tfoot>
+                        <tr> 
+                            <td colSpan="4">Łączny koszt</td>
+                            <td>{`${getSumPrice(componentsList)} PLN`}</td>
+                        </tr>
+                        <tr> 
+                            <td colSpan="5">{`Ilość pozycji: ${componentsList.length}`}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                {editableComponent && <EditableComponent content={editableComponent} setEditableComponent={setEditableComponent}/>}
+            </StyledWorkstationTable>
+        </>
     )
 }
 

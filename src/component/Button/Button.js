@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import StyledButton from './Button.styled';
 
-const Button = ({id, onClick, children}) => {
+const Button = ({id, onClick, children, notAnimated}) => {
     return( 
-        <StyledButton data-id={id} onClick={onClick}>{children}</StyledButton>
+        <StyledButton data-id={id} onClick={onClick} notAnimated={notAnimated}>{children}</StyledButton>
     )
 }
 

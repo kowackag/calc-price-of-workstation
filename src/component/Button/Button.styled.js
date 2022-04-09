@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const StyledButton = styled.button`
     position: relative;
@@ -10,26 +10,31 @@ const StyledButton = styled.button`
     background-color: white;
     font-weight: bold;
     text-align: center;
-    
     color: rgb(var(--color-alfa));
     cursor: pointer;
-    &::before {
-        content: '${props=>props.children}';
-        position: absolute;
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-        padding:0.8rem;
-        border: none;
-        background-color: rgb(var(--color-alfa));
-        color: white;
-        opacity:0;
-        transition: opacity 0.6s ease-out; 
-        will-change: opacity;      
-    }
-    &:hover::before {
-        opacity:1;
+
+    ${ props=> props.notAnimated ||  css` &::before {
+            content: '${props=>props.children}';
+            position: absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            padding:0.8rem;
+            border: none;
+            background-color: rgb(var(--color-alfa));
+            color: white;
+            opacity:0;
+            transition: opacity 0.6s ease-out; 
+            will-change: opacity;      
+        }
+        &:hover::before {
+            opacity: 1;
+        }
+    }`}
+
+    & > svg > path {
+        font-size: 3rem;
     }
 `
 
