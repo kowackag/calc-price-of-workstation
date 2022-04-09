@@ -85,7 +85,7 @@ const WorkstationForm = () => {
     const inputFields = [
         {name: 'type', value: type, type: 'string', description: 'Nazwa', err: errType},
         {name: 'model', value: model, type: 'string', description: 'Opis', err: errModel},
-        {name: 'price', value: price, type: 'number', step:".01", description: 'Cena', min: 0, err: errPrice},
+        {name: 'price', value: price, type: 'number', step:".01", description: 'Cena', min: 0, unit: "PLN", err: errPrice},
         {name: 'info', value: info, type: 'textarea', description: 'Uwagi'}
     ]
 
@@ -101,7 +101,7 @@ const WorkstationForm = () => {
             /> 
             <Add onClick={addCategory}/>
             <div>
-                {inputFields.map(({name, value, type, description, min, step, err})=>(
+                {inputFields.map(({name, value, type, description, min, unit, step, err})=>(
                     <div key={name}>
                         <label htmlFor={name}>{description}</label>
                         <Input 
@@ -110,6 +110,7 @@ const WorkstationForm = () => {
                             name={name} 
                             value={value} 
                             min={min}
+                            unit={unit}
                             step={step}
                             onChange={changeValue}
                         />
