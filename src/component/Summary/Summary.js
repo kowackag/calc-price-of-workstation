@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 
-import { ItemContext } from '../context';
+import { ItemContext} from '../context';
 import {saveOrdersAPI} from './../../api/DataAPI'
 
 import Button from '../Button/Button';
@@ -11,7 +11,7 @@ import { validateSummary } from '../../validateData';
 import Error from '../Error/Error';
 
 const Summary = () => { 
-
+    
     const componentsList = useContext(ItemContext);
     const init = {
         performer: '',
