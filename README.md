@@ -5,7 +5,6 @@
 ## Table of contents
 
 [⭐ Overview](#⭐-overview)
-  - [The challenge](#the-challenge)
   - [Instalation](#Installation-💿)
   - [Links](#links)
 
@@ -26,8 +25,6 @@
 ## ⭐ Overview
 
 &nbsp;
-
-### **The challenge:**
 
 
 ### **Installation 💿**
@@ -82,7 +79,7 @@ http://localhost:3000
     - To store all communication with the API in one place, the function DataAPI was created (in the separated file `DataAPI.js`).
     - Communication with API is based on `fetch()` method.
     - To run the project using browsers that do not support `fetch()` method, package `whatwg-fetch` was used.
-    - All fields are validated also using `RegExr`.
+    - All fields are validated .
 - React:
     - The following hooks were used: `useState`, `useEffect`, `useRef`, `useContext` and `Custom Hook`.
     - Components are split and kept in smaller ones.

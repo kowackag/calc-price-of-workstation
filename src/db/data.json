@@ -132,6 +132,49 @@
       "type": "Office",
       "model": "365",
       "price": 49
+    },
+    
+    {
+      "category": "komputer",
+      "type": "RAM",
+      "model": "8GB",
+      "price": 400
+    },
+    {
+      "category": "komputer",
+      "type": "RAM",
+      "model": "16GB",
+      "price": 1300
+    },
+    {
+      "category": "komputer",
+      "type": "procesor",
+      "model": "i5-11600K",
+      "price": 1200
+    },
+    {
+      "category": "komputer",
+      "type": "procesor",
+      "model": "AMD Ryzen 5 5600X",
+      "price": 1300
+    },
+        {
+      "category": "komputer",
+      "type": "procesor",
+      "model": "i5-11600K",
+      "price": 1200
+    },
+    {
+      "category": "komputer",
+      "type": "procesor",
+      "model": "AMD Ryzen 5 5600G",
+      "price": 999
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "AMD Ryzen 7 5700G BOX",
+      "price": 1340
     }
   ],
   "orders": []
