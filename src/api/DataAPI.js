@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://new-fake-serv.herokuapp.com";
 
 
 const handleErrors = (resp) => {

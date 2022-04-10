@@ -190,6 +190,37 @@
         }
       ],
       "id": 1
+    },
+    {
+      "performer": "małgorzarta",
+      "info": "",
+      "components": [
+        {
+          "id": "2e54805d-3f4e-4cee-865b-bb17a64467d4",
+          "category": "komputer",
+          "type": "Windows",
+          "model": "10 Home",
+          "price": "777.03",
+          "info": ""
+        },
+        {
+          "id": "69d874f1-5a7f-48b3-a6bd-b80d9172e0ff",
+          "category": "oprogramowanie",
+          "type": "Windowsxxxxxxxxxx",
+          "model": "10 Home",
+          "price": "12000",
+          "info": ""
+        },
+        {
+          "id": "d2bebdb4-628f-44ff-958a-f147113c8085",
+          "category": "meble",
+          "type": "szafa",
+          "model": "100x120",
+          "price": "666",
+          "info": ""
+        }
+      ],
+      "id": 2
     }
   ]
 }
