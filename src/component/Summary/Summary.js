@@ -44,21 +44,17 @@ const Summary = () => {
             <form onSubmit={sentOrder}>
                 <div>
                     <Input name="performer" value={performer} onChange={changeValue} placeholder="wykonawca"/> 
-                    {errPerformer && <Error err={errPerformer}/>}  
+                   {errPerformer && <Error err={errPerformer}/> }
                 </div>
                 <div>
                     <Input type="textarea" name="info" value={info} onChange={changeValue} placeholder="uwagi"/>
                 </div>
                 <div>
-                    <Button type="button">Drukuj</Button>
-                    <Button type="click">Wyślij</Button>
-                    
+                    <Button type="button">Wyślij</Button>
                 </div>
-                
             </form>
         </StyledSummary>
     )
-
 }
 
 export default Summary;

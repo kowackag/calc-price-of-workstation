@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 
 const StyledInput = styled.div`
-    display: inline-block;
+    display: block;
     position: relative;
-
-    & >span {
+   
+    & > span {
+        display:inline-block;
         position: absolute;
         top:0;
-        right:30px;
+        left: 15rem;
         padding: 1rem 0;  
         color: rgba(var(--color-alfa), 0.5);
         font-size: 1.2rem;
     } 
     
-    &>input {
-        display: inline-block;
+    & > input { position: relative;
+        display: block;
         padding: 1rem;
         margin-left: 2rem;
         height: 3.5rem;
@@ -28,7 +29,6 @@ const StyledInput = styled.div`
             -webkit-text-fill-color: rgb(var(--color-font)) !important;
         }
     }
-
 `
 
 export default StyledInput;

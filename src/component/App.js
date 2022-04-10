@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {ItemContext, UpdateContext} from './context';
+import {ItemContext, UpdateContext, UpdateCategoryContext, CategoryContext} from './context';
 import { useStorage } from './Hooks';
 
 import WorkstationForm from './WorkstationForm/WorkstationForm';
@@ -19,7 +19,12 @@ const App = () => {
     fromLocalStorage = init; 
   }
 
+  let categFromLS = getItem('categories');
+  if (categFromLS === null) {
+    categFromLS = init; 
+  }
   const [data, setData] = useState(fromLocalStorage);
+  const [categories, setCategories] = useState(categFromLS);
 
   const updateComponentList = (element, action) => {
     if (action === 'add') {
@@ -42,17 +47,29 @@ const App = () => {
     }
   }
 
+  const updateCategories = (element) => { 
+      setCategories(element);
+      setItem(element, 'categories')
+  }
+
   return (
     <ItemContext.Provider value={data}>
       <UpdateContext.Provider value={updateComponentList}>
-        <StyledApp>
-          <h1>Konfigurator stanowiska komputerowego</h1>
-          <div>
-              <WorkstationForm/>
-              <Summary/>
-          </div>  
-          <WorkstationSection/>
-        </StyledApp>
+        <CategoryContext.Provider value={categories}>
+
+        
+        <UpdateCategoryContext.Provider value={updateCategories}>
+          <StyledApp>
+            <h1>Konfigurator stanowiska komputerowego</h1>
+            <div>
+                <WorkstationForm/>
+                <Summary/>
+            </div>  
+            <WorkstationSection/>
+          </StyledApp>
+          
+        </UpdateCategoryContext.Provider>
+        </CategoryContext.Provider>
       </UpdateContext.Provider>
     </ItemContext.Provider>
   );

@@ -25,7 +25,7 @@ export const validateData =({category, type, model, price}) => {
 
 export const validateSummary = ({performer}) => {
     let errors = {};
-    if (!performer) {
+    if (performer==='') {
         const copyErrors = {performer: 'Wpisz wykonawcę'};
         errors = {...errors, ...copyErrors};
     }

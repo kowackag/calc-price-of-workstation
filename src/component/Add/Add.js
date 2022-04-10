@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,17 +6,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import StyledApp from './Add.styled';
 
 
-const Add = ({children, onClick}) => {
+const Add = ({setNewCategory}) => {
+    
+    const [isActive, setIsActive] = useState(false);
     return (
-        <StyledApp>
-            <FontAwesomeIcon onClick={onClick} icon={faSquarePlus}/>
+        <StyledApp active={isActive}>
+            { isActive 
+            ?  <>
+                    <input onChange={(e)=>setNewCategory(e.target.value)}/>
+                    <FontAwesomeIcon onClick={()=>setIsActive(!isActive)} icon={faSquarePlus}/>
+                </> 
+            : <FontAwesomeIcon onClick={()=>setIsActive(!isActive)} icon={faSquarePlus}/>}    
         </StyledApp>
     )
 }
 
 Add.propTypes = {
-    children: PropTypes.node,
-    onClick: PropTypes.func
+    setNewCategory: PropTypes.func.isRequired
 }
 
 export default Add;

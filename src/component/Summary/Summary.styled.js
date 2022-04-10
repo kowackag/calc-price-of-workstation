@@ -1,7 +1,7 @@
 import styled from  'styled-components';
 
 const StyledSummary = styled.article`
-    width: 40%;
+    width: 30%;
     padding: 2rem;
     background-color: rgb(var(--color-alfa));
     text-align: center;
@@ -12,11 +12,9 @@ const StyledSummary = styled.article`
         margin-bottom: 2rem;
         text-align: center;
     }
-
     & form {      
         & div {
-            margin-bottom: 3rem;
-
+            margin-top: 3rem;
             & input+p {
                 position: relative;
             }
@@ -26,6 +24,5 @@ const StyledSummary = styled.article`
             }
         }
     }
-
 `
 export default StyledSummary; 

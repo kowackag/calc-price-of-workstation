@@ -1,12 +1,11 @@
-import React, {useEffect, useState, useRef, useContext} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import PropTypes from 'prop-types';
 import { useReactToPrint } from 'react-to-print';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 
-import {ItemContext, UpdateContext} from '../context.js';
-import {loadProductsFromAPI} from '../../api/DataAPI';
+import {CategoryContext, ItemContext, UpdateContext} from '../context.js';
 
 import Button from './../Button/Button'
 import EditableComponent from '../EditableComponent/EditableComponent.js';
@@ -16,19 +15,10 @@ import StyledWorkstationTable from './WorkstationTable.styled';
 
 const WorkstationTable = ({isCategorised, text}) => {
     
-    const pdfExportComponent = useRef(null)
     const componentsList = useContext(ItemContext);
+    const categories = useContext(CategoryContext);
     const updateContext = useContext(UpdateContext);
     const [editableComponent, setEditableComponent] = useState(null);
-    
-    const [categories, setCategories] = useState([]);
-   
-    useEffect(() => {
-        loadProductsFromAPI('categories')
-            .then(item=>item)
-            .then(data=>setCategories(data))
-    },[]);
-
     const [sortedWay, setSortedWay] = useState('');
 
     const filteredComponentList = componentsList.filter(({type, model, category, price})=>type.includes(text) || model.includes(text) || category.includes(text) || price.includes(text));
@@ -97,15 +87,11 @@ const WorkstationTable = ({isCategorised, text}) => {
         {name: "price", desc: "Cena"},
         {name: ""}
     ]
-    const  handleExportWithComponent  = (event) => {
-        pdfExportComponent.current.save();
-    }
 
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
     });
-
 
     return (
         <>     

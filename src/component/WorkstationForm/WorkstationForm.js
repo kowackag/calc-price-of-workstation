@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {v4 as uuid} from 'uuid'
 
-import {UpdateContext} from '../context.js';
+import {UpdateContext, UpdateCategoryContext} from '../context.js';
 import {loadProductsFromAPI} from '../../api/DataAPI';
 import {validateData} from './../../validateData';
 
@@ -26,6 +26,8 @@ const WorkstationForm = () => {
     const [state, setState] =  useState(init);
     const {category, type, model, price, info} = state;
     const [categories, setCategories] = useState([]);
+    const [newCategory, setNewCategory] = useState('');
+    
     const [products, setProducts] = useState();
 
     const [err, setErr] = useState({});
@@ -39,22 +41,18 @@ const WorkstationForm = () => {
         price: errPrice
     } = err;
 
-
     useEffect(() => {
         loadProductsFromAPI('categories')
             .then(item=>item)
-            .then(data=>setCategories(data))
-    },[]);
+            .then(data=>setCategories([...data, newCategory]));       
+    },[newCategory]);
 
- 
-    // useEffect(() => {
-    //     loadProductsFromAPI()
-    //         .then(item=>item)
-    //         .then(data=>setProducts(data))
-    // },[]);
+    const updateComponentList = useContext(UpdateContext);
+    const updateCategories = useContext(UpdateCategoryContext);
 
-
-    const updateComponentList = useContext(UpdateContext)
+    useEffect(() => {
+        updateCategories(categories)
+    },[updateCategories, categories]);
 
     const changeValue = e => {
         e.preventDefault(); 
@@ -66,17 +64,11 @@ const WorkstationForm = () => {
         setState({...state, category: e.target.dataset.code})
     }
 
-    const addCategory = () => {
-        
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = validateData(state);
         setErr(errors);
-        console.log(err)
         if (Object.keys(errors).length === 0) {
-            console.log('opfdate')
             updateComponentList(state, 'add');
             setState(init);
         }
@@ -99,7 +91,7 @@ const WorkstationForm = () => {
                 onChange={setValue}
                 err={errCategory}
             /> 
-            <Add onClick={addCategory}/>
+            <Add setNewCategory={setNewCategory}/>
             <div>
                 {inputFields.map(({name, value, type, description, min, unit, step, err})=>(
                     <div key={name}>

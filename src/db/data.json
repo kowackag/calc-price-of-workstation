@@ -95,48 +95,44 @@
     {
       "performer": "małgorzarta",
       "info": "",
-      "components": [
-        {
-          "id": "70d40486-3fd2-45c5-b1a1-5bcbc9827203",
-          "category": "komputer",
-          "type": "głośniki",
-          "model": "ddd",
-          "price": "50",
-          "info": ""
-        }
-      ],
+      "components": [],
       "id": 1
     },
     {
-      "performer": "małgorzarta",
+      "performer": "x",
       "info": "",
-      "components": [
-        {
-          "id": "399eb7a0-b7ab-46ed-a882-c8e1f9aee257",
-          "category": "oprogramowanie",
-          "type": "dddd",
-          "model": "focus",
-          "price": "1",
-          "info": ""
-        },
-        {
-          "id": "e911f156-a71c-4160-89d5-45ce6e353fed",
-          "category": "komputer",
-          "type": "głośniki",
-          "model": "ddd",
-          "price": "50",
-          "info": ""
-        },
-        {
-          "id": "f3e169a5-2d5c-4aa3-aad9-1f986086d3cd",
-          "category": "oprogramowanie",
-          "type": "procesor",
-          "model": "model",
-          "price": "666",
-          "info": ""
-        }
-      ],
+      "components": [],
       "id": 2
+    },
+    {
+      "performer": "x",
+      "info": "",
+      "components": [],
+      "id": 3
+    },
+    {
+      "performer": "x",
+      "info": "",
+      "components": [],
+      "id": 4
+    },
+    {
+      "performer": "x",
+      "info": "",
+      "components": [],
+      "id": 5
+    },
+    {
+      "performer": "x",
+      "info": "",
+      "components": [],
+      "id": 6
+    },
+    {
+      "performer": "x",
+      "info": "",
+      "components": [],
+      "id": 7
     }
   ]
 }

@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 const DefaultStyledDropdown = styled.span`
     display:inline-block;
     position: relative;
-    width: 60%;
+    width: 30%;
     margin: auto;
     margin-bottom: 3rem;
     border: 1px solid rgb(var(--color-line));
