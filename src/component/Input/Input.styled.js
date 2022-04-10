@@ -14,7 +14,8 @@ const StyledInput = styled.div`
         font-size: 1.2rem;
     } 
     
-    & > input { position: relative;
+    & > input { 
+        position: relative;
         display: block;
         padding: 1rem;
         margin-left: 2rem;

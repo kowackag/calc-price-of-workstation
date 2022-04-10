@@ -4,11 +4,11 @@ import Error from './../Error/Error';
 
 import StyledDropdown from './Dropdown.styled';
 
-const Dropdown = ({name, value, categ, onChange, err}) => {
+const Dropdown = ({name, value, items, setValue, err}) => {
     const [isActive, setIsActive] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
     const [isOnMouse, setIsOnMouse] = useState(false);
-       
+    
     const handleOnBlur = () => {
         setIsFocus(false);
         isOnMouse || setIsActive(false);
@@ -27,14 +27,13 @@ const Dropdown = ({name, value, categ, onChange, err}) => {
                 onFocus={()=> {
                 setIsFocus(true)}} 
                 onBlur={handleOnBlur} 
-                onChange={onChange}
                 readOnly={true}
             />
            
             <label></label> 
             <> {err && <Error err={err}/>}</>
             <ul onMouseOver={()=>setIsOnMouse(true)} onMouseLeave={handleOnMouseLeave}>
-                {categ.map(el=><li key={el} data-code={el} name={name} onClick={onChange}>{el}</li>)} 
+                {items.map(el=><li key={el} data-code={el} data-name={name} onClick={setValue}>{el}</li>)} 
             </ul>
         </StyledDropdown>
     )

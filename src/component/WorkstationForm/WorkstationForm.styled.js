@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-const StyledWorkstationForm = styled.form`
+export const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2rem;
+    & >div>label {
+        display:block;
+    }
+`
+
+export const StyledWorkstationForm = styled.form`
     padding: 2rem;
     width: 70%;
     border: 1px solid rgb(var(--color-line));
@@ -9,15 +18,10 @@ const StyledWorkstationForm = styled.form`
     & label {
        margin-left: 2rem;
        margin-right: 2rem;
-       margin-top: 2.5rem;
        color: rgb(var(--color-alfa));
     }
 
-    & > div {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 2rem;
-    }
+    
 `
 
 export default StyledWorkstationForm;

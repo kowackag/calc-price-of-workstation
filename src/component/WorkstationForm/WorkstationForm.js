@@ -6,12 +6,13 @@ import {loadProductsFromAPI} from '../../api/DataAPI';
 import {validateData} from './../../validateData';
 
 import Dropdown from '../Dropdown/Dropdown.js';
+import Search from '../Search/Search';
 import Add from '../Add/Add';
 import Input from '../Input/Input.js';
 import Submit from '../Submit/Submit';
 import Error from '../Error/Error.js';
 
-import StyledWorkstationForm from './WorkstationForm.styled.js';
+import StyledWorkstationForm, {Container} from './WorkstationForm.styled.js';
 
 const WorkstationForm = () => {
     const init = {
@@ -27,20 +28,43 @@ const WorkstationForm = () => {
     const {category, type, model, price, info} = state;
     const [categories, setCategories] = useState([]);
     const [newCategory, setNewCategory] = useState('');
-    
-    const [products, setProducts] = useState();
-
     const [err, setErr] = useState({});
 
-    // const kat = products && Object.keys(products);
+    const [productsList, setProductsList] = useState([]); 
 
-    const {
-        category: errCategory,
-        type: errType,
-        model: errModel,
-        price: errPrice
-    } = err;
+    useEffect(() => {
+        loadProductsFromAPI('products')
+            .then(item=>item)
+            .then(data=>setProductsList(data));       
+    },[]);
 
+    const [typeList, setTypeList] = useState([]);
+    const [modelList, setModelList] = useState([]);
+
+    
+    useEffect(()=> {
+        const copyList = category 
+            ? productsList.filter(item=>item.category === category).map(({type})=> type)
+            : productsList.map(({type})=> type)
+        const uniqList = copyList.filter((c, index) => copyList.indexOf(c) === index);
+        setTypeList(uniqList);
+    }, [category, productsList]);
+
+    useEffect(()=> {
+        const copyList = type && category
+            ? productsList.filter(item=>item.type === type && item.category === category).map(({model})=> model)
+            : productsList.map(({model})=> model)
+        const uniqList = copyList.filter((c, index) => copyList.indexOf(c) === index);
+        setModelList(uniqList);
+    }, [type, category, productsList]);
+
+
+    useEffect(()=> {
+        const price = productsList.find(item=>item.type === type && item.model === model) ? productsList.find(item=>item.type === type && item.model === model).price :'' ;
+            setState({...state, price: price})
+    }, [type, model, price, state, productsList]);
+
+  
     useEffect(() => {
         loadProductsFromAPI('categories')
             .then(item=>item)
@@ -61,7 +85,7 @@ const WorkstationForm = () => {
     
     const setValue = e => {
         e.preventDefault();
-        setState({...state, category: e.target.dataset.code})
+        setState({...state, [e.target.dataset.name]: e.target.dataset.code})
     }
 
     const handleSubmit = (e) => {
@@ -74,10 +98,11 @@ const WorkstationForm = () => {
         }
     }
 
+
+
+
     const inputFields = [
-        {name: 'type', value: type, type: 'string', description: 'Nazwa', err: errType},
-        {name: 'model', value: model, type: 'string', description: 'Opis', err: errModel},
-        {name: 'price', value: price, type: 'number', step:".01", description: 'Cena', min: 0, unit: "PLN", err: errPrice},
+        {name: 'price', value: price, type: 'number', step:".01", description: 'Cena', min: 0, unit: "PLN", err: err.price},
         {name: 'info', value: info, type: 'textarea', description: 'Uwagi'}
     ]
 
@@ -87,12 +112,38 @@ const WorkstationForm = () => {
             <Dropdown 
                 name="category" 
                 value={category} 
-                categ={categories ? categories : []} 
-                onChange={setValue}
-                err={errCategory}
+                items={categories} 
+                setValue={setValue}
+                err={err.category}
             /> 
             <Add setNewCategory={setNewCategory}/>
-            <div>
+            <Container>
+                <div> 
+                <label>Nazwa</label>
+                <Search 
+                    name="type" 
+                    value={type} 
+                    items={typeList ? typeList : []} 
+                    isMutable={true}
+                    setValue={setValue}
+                    onChange={changeValue}
+                    err={err.type}
+                />    
+                </div>
+                <div>
+                <label >Opis</label>
+                <Search 
+                    name="model" 
+                    value={model} 
+                    items={modelList ? modelList : []} 
+                    isMutable={true}
+                    setValue={setValue}
+                    onChange={changeValue}
+                    err={err.model}
+                />   
+                </div>  
+            </Container>
+            <Container>
                 {inputFields.map(({name, value, type, description, min, unit, step, err})=>(
                     <div key={name}>
                         <label htmlFor={name}>{description}</label>
@@ -109,7 +160,7 @@ const WorkstationForm = () => {
                         {err && <Error err={err}/>}
                     </div>
                 ))}
-            </div>
+            </Container>
             <Submit type="submit">Dodaj</Submit>
         </StyledWorkstationForm>
     )

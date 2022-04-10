@@ -1,138 +1,138 @@
 {
   "categories": [
     "komputer",
-    "urządząnia peryferyjne",
+    "urządzenia peryferyjne",
     "oprogramowanie",
     "inne"
   ],
-  "products": {
-    "urządząnia peryferyjne": [
-      {
-        "myszka": [
-          {
-            "model": "Logitech M705 Marathon",
-            "price": 169
-          },
-          {
-            "model": "Logitech MX Vertical Ergonomic",
-            "price": 449
-          },
-          {
-            "model": "HP Z5000",
-            "price": 99
-          },
-          {
-            "model": "Microsoft 1850",
-            "price": 69
-          },
-          {
-            "model": "Microsoft Bluetooth Mobile Mouse 3600",
-            "price": 129
-          }
-        ]
-      },
-      {
-        "klawiatura": [
-          {
-            "model": "Logitech M705 Marathon",
-            "price": 169
-          },
-          {
-            "model": "Logitech MX Vertical Ergonomic",
-            "price": 449
-          },
-          {
-            "model": "HP Z5000",
-            "price": 99
-          },
-          {
-            "model": "Microsoft 1850",
-            "price": 69
-          },
-          {
-            "model": "Microsoft Bluetooth Mobile Mouse 3600",
-            "price": 129
-          }
-        ]
-      }
-    ],
-    "software": [
-      {
-        "Windows": [
-          {
-            "model": "10 Home",
-            "price": 777
-          },
-          {
-            "model": "10 PRO",
-            "price": 999
-          },
-          {
-            "model": "11PRO",
-            "price": 1125
-          }
-        ]
-      },
-      {
-        "Office": [
-          {
-            "model": "10 Home",
-            "price": 777
-          },
-          {
-            "model": "10 PRO",
-            "price": 999
-          },
-          {
-            "model": "11PRO",
-            "price": 1125
-          }
-        ]
-      }
-    ]
-  },
-  "orders": [
-    {
-      "performer": "małgorzarta",
-      "info": "",
-      "components": [],
-      "id": 1
+  "products": [{
+      "category": "urządzenia peryferyjne",
+      "type": "myszka",
+      "model": "Logitech M705 Marathon",
+      "price": 169
     },
     {
-      "performer": "x",
-      "info": "",
-      "components": [],
-      "id": 2
+      "category": "urządzenia peryferyjne",
+      "type": "myszka",
+      "model": "Logitech MX Vertical Ergonomic",
+      "price": 449
     },
     {
-      "performer": "x",
-      "info": "",
-      "components": [],
-      "id": 3
+      "category": "urządzenia peryferyjne",
+      "type": "myszka",
+      "model": "HP Z5000",
+      "price": 99
     },
     {
-      "performer": "x",
-      "info": "",
-      "components": [],
-      "id": 4
+      "category": "urządzenia peryferyjne",
+      "type": "myszka",
+      "model": "Microsoft 1850",
+      "price": 69
     },
     {
-      "performer": "x",
-      "info": "",
-      "components": [],
-      "id": 5
+      "category": "urządzenia peryferyjne",
+      "type": "myszka",
+      "model": "Microsoft Bluetooth Mobile Mouse 3600",
+      "price": 129
     },
     {
-      "performer": "x",
-      "info": "",
-      "components": [],
-      "id": 6
+      "category": "urządzenia peryferyjne",
+      "type": "klawiatura",
+      "model": "Logitech M705 Marathon",
+      "price": 169
     },
     {
-      "performer": "x",
-      "info": "",
-      "components": [],
-      "id": 7
+      "category": "urządzenia peryferyjne",
+      "type": "klawiatura",
+      "model": "Logitech MX Vertical Ergonomic",
+      "price": 449
+    },
+    {
+      "category": "urządzenia peryferyjne",
+      "type": "klawiatura",
+      "model": "HP Z5000",
+      "price": 99
+    },
+    {
+      "category": "urządzenia peryferyjne",
+      "type": "klawiatura",
+      "model": "Microsoft 1850",
+      "price": 69
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Windows",
+      "model": "10 Home",
+      "price": 777
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Windows",
+      "model": "10 PRO",
+      "price": 999
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Windows",
+      "model": "11PRO",
+      "price": 1125
+    },
+
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "2019",
+      "price": 400
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "2021",
+      "price": 999
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "365",
+      "price": 49
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Windows",
+      "model": "10 Home",
+      "price": 777
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Windows",
+      "model": "10 PRO",
+      "price": 999
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Windows",
+      "model": "11PRO",
+      "price": 1125
+    },
+
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "2019",
+      "price": 400
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "2021",
+      "price": 999
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Office",
+      "model": "365",
+      "price": 49
     }
-  ]
+  ],
+  "orders": []
 }
