@@ -41,10 +41,9 @@ Then, you may run webpack typing in the terminal:
 npm start
 ```
 
-To run JSON-Server, type in the second terminal:
+You do not have to install JSON-Server, fake-server is created thanks to [Heroku](https://www.heroku.com/)
+
 ``` 
-json-server --watch ./src/db/data.json
-```
 App is available using the following addresses:
 
 http://localhost:3000
@@ -53,6 +52,7 @@ http://localhost:3000
 
 ### **Links:**
 - [GitHub](https://github.com/kowackag/calc-price-of-workstation)
+- [live](https://calc-app-mdb.herokuapp.com/)
 
 &nbsp;
 

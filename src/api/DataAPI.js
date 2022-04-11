@@ -1,13 +1,11 @@
 const url = "https://new-fake-serv.herokuapp.com";
 
-
 const handleErrors = (resp) => {
     if (!resp.ok) {
         return Promise.reject(resp.status)
     }
     return resp;
 }
-
 
 export const saveOrdersAPI = (data) => {
     const options = {

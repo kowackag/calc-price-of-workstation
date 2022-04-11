@@ -53,7 +53,7 @@ const WorkstationForm = () => {
 
     useEffect(() => {
         const copyList = type ?
-        productsList.filter(item => item.type === type).map(({model}) => model) :
+        productsList.filter(item => item.type === type && item.category === category).map(({model}) => model) :
         productsList.map(({model}) => model)
         const uniqList = copyList.filter((c, index) => copyList.indexOf(c) === index);
         setModelList(uniqList);

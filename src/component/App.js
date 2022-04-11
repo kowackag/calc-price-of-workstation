@@ -55,20 +55,17 @@ const App = () => {
   return (
     <ItemContext.Provider value={data}>
       <UpdateContext.Provider value={updateComponentList}>
-        <CategoryContext.Provider value={categories}>
-
-        
-        <UpdateCategoryContext.Provider value={updateCategories}>
-          <StyledApp>
-            <h1>Konfigurator stanowiska komputerowego</h1>
-            <div>
-                <WorkstationForm/>
-                <Summary/>
-            </div>  
-            <WorkstationSection/>
-          </StyledApp>
-          
-        </UpdateCategoryContext.Provider>
+        <CategoryContext.Provider value={categories}>      
+          <UpdateCategoryContext.Provider value={updateCategories}>
+            <StyledApp>
+              <h1>Konfigurator stanowiska komputerowego</h1>
+              <div>
+                  <WorkstationForm/>
+                  <Summary/>
+              </div>  
+              <WorkstationSection/>
+            </StyledApp>
+          </UpdateCategoryContext.Provider>
         </CategoryContext.Provider>
       </UpdateContext.Provider>
     </ItemContext.Provider>
