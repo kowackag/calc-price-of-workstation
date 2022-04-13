@@ -43,7 +43,6 @@ npm start
 
 You do not have to install JSON-Server, fake-server is created thanks to [Heroku](https://www.heroku.com/)
 
-``` 
 App is available using the following addresses:
 
 http://localhost:3000
