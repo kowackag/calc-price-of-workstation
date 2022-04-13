@@ -98,7 +98,7 @@ import {createGlobalStyle} from 'styled-components';
 import robotoRegularWoff from "./../fonts/roboto-regular-webfont.woff";
 import robotoRegularWoff2 from "./../fonts/roboto-regular-webfont.woff2";
  .....
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle
     ...
     @font-face {
         font-family: "Roboto";
