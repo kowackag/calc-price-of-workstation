@@ -21,7 +21,7 @@ const WorkstationTable = ({isCategorised, text}) => {
     const [editableComponent, setEditableComponent] = useState(null);
     const [sortedWay, setSortedWay] = useState('');
 
-    const filteredComponentList = componentsList.filter(({type, model, category, price})=>type.includes(text) || model.includes(text) || category.includes(text) || price.includes(text));
+    const filteredComponentList = componentsList.filter(({type, model, category})=>type.includes(text) || model.includes(text) || category.includes(text));
         
     const sortComponentList = (arr, element) => {
         const sortUp = (property) => (a,b) => {
