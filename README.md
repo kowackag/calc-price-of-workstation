@@ -43,7 +43,6 @@ npm start
 
 You do not have to install JSON-Server, fake-server is created thanks to [Heroku](https://www.heroku.com/)
 
-``` 
 App is available using the following addresses:
 
 http://localhost:3000
@@ -98,7 +97,7 @@ import {createGlobalStyle} from 'styled-components';
 import robotoRegularWoff from "./../fonts/roboto-regular-webfont.woff";
 import robotoRegularWoff2 from "./../fonts/roboto-regular-webfont.woff2";
  .....
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle
     ...
     @font-face {
         font-family: "Roboto";
