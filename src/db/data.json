@@ -169,10 +169,23 @@
       "price": 999
     },
     {
-      "category": "oprogramowanie",
+      "category": "komputer",
       "type": "Office",
       "model": "AMD Ryzen 7 5700G BOX",
       "price": 1340
+    },
+    {
+      "category": "oprogramowanie",
+      "type": "Avast",
+      "model": "Premium security 2022",
+      "price": 345
+    }
+    ,
+    {
+      "category": "oprogramowanie",
+      "type": "Avast",
+      "model": "Ultimate",
+      "price": 123
     }
   ],
   "orders": [
