@@ -1,4 +1,4 @@
-# Diet form with calculator BMI
+# Calculator of worstation price
 
 &nbsp;
 
