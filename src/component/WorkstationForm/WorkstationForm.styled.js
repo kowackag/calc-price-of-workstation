@@ -20,7 +20,6 @@ export const StyledWorkstationForm = styled.form`
        margin-right: 2rem;
        color: rgb(var(--color-alfa));
     }
-
     
 `
 
