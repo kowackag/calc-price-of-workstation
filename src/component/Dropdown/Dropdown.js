@@ -32,8 +32,6 @@ const Dropdown = ({name, value, items, setValue, err, isMutable}) => {
                 onBlur={handleOnBlur} 
                 readOnly={true}
             />
-           
-            <label></label> 
             <> {err && <Error err={err}/>}</>
             <ul onMouseOver={()=>setIsOnMouse(true)} onMouseLeave={handleOnMouseLeave}>
                 {copyItems.map(el=><li key={el} data-code={el} data-name={name} onClick={setValue}>{el}</li>)} 

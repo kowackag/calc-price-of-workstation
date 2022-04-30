@@ -7,8 +7,10 @@ const StyledApp = styled.section`
         color: rgb(var(--color-alfa));
     }
 
-    & > div {
-        display: flex;
+    @media(min-width:762px) {
+        & > div {
+            display: flex;
+        }
     }
 `
 

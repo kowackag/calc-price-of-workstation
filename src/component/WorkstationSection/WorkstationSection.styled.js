@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 
 const StyledWorkstatnionSection = styled.article`
-    padding: 3rem;
+    padding: 1rem;
     border: 1px solid rgb(var(--color-line));
     border-top: 3px solid rgb(var(--color-alfa));
 
     & h2 { 
         margin-bottom: 2rem;
     }
-
-    /* & p { 
-        font-style: italic;
-    } */
 
     & .sorted-block {
         text-align: end;
@@ -45,6 +41,10 @@ const StyledWorkstatnionSection = styled.article`
             border: 1px solid rgb(var(--color-alfa));
             color: white;
         }
+    }
+
+    @media(min-width:762px){
+        padding:3rem;
     }
    
 `

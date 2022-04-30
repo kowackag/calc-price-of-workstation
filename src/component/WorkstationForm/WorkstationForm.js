@@ -114,9 +114,9 @@ const WorkstationForm = () => {
                 err={err.category}
             /> 
             <Add setNewCategory={setNewCategory}/>
+            
             <Container>
-                <div> 
-                <label>Nazwa</label>
+                <label>Nazwa
                 <Search 
                     name="type" 
                     value={type} 
@@ -125,10 +125,9 @@ const WorkstationForm = () => {
                     setValue={setValue}
                     onChange={changeValue}
                     err={err.type}
-                />    
-                </div>
-                <div>
-                <label >Opis</label>
+                /> </label>   
+
+                <label >Opis
                 <Search 
                     name="model" 
                     value={model} 
@@ -137,13 +136,11 @@ const WorkstationForm = () => {
                     setValue={setValue}
                     onChange={changeValue}
                     err={err.model}
-                />   
-                </div>  
-            </Container>
-            <Container>
+                /> </label>  
+
                 {inputFields.map(({name, value, type, description, min, unit, step, err})=>(
                     <div key={name}>
-                        <label htmlFor={name}>{description}</label>
+                        <label htmlFor={name}>{description}
                         <Input 
                             id={name} 
                             type={type} 
@@ -153,7 +150,7 @@ const WorkstationForm = () => {
                             unit={unit}
                             step={step}
                             onChange={changeValue}
-                        />
+                        /></label>
                         {err && <Error err={err}/>}
                     </div>
                 ))}

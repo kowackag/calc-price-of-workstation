@@ -26,7 +26,6 @@ const Search = ({name, value, items, setValue, onChange, err, isMutable}) => {
         <StyledSearch active={isActive} onClick={()=>setIsActive(!isActive)}>
             <input value={value || ""} name={name}  onFocus={()=> {
                 setIsFocus(true)}} onBlur={handleOnBlur} onChange={isMutable ? onChange:null} readOnly={isMutable ? false: true}/>
-                <label></label> 
                 <> {err && <Error err={err}/>}</>
                 <ul onMouseOver={()=>setIsOnMouse(true)} onMouseLeave={handleOnMouseLeave}>
                     {copyItems.map(el=><li key={el} onClick={setValue} value={el} data-code={el} data-name={name}>{el}</li>)} 

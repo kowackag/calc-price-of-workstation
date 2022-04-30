@@ -10,17 +10,25 @@ export const Container = styled.div`
 `
 
 export const StyledWorkstationForm = styled.form`
-    padding: 2rem;
-    width: 70%;
+    padding: 2rem 1rem;
+    width: 100%;
     border: 1px solid rgb(var(--color-line));
     border-top: 3px solid rgb(var(--color-alfa));
     
     & label {
-       margin-left: 2rem;
-       margin-right: 2rem;
-       color: rgb(var(--color-alfa));
+        display: block;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        color: rgb(var(--color-alfa));
     }
-    
+
+    @media(min-width:762px) {
+        width: 70%;
+        & label {
+            display: inline-block;
+        }
+    }
+
 `
 
 export default StyledWorkstationForm;

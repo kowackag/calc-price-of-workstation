@@ -8,7 +8,7 @@ const StyledInput = styled.div`
         display:inline-block;
         position: absolute;
         top:0;
-        left: 15rem;
+        left: 75%;
         padding: 1rem 0;  
         color: rgba(var(--color-alfa), 0.5);
         font-size: 1.2rem;
@@ -18,8 +18,8 @@ const StyledInput = styled.div`
         position: relative;
         display: block;
         padding: 1rem;
-        margin-left: 2rem;
         height: 3.5rem;
+        width: 100%;
         outline: none;
         border: 1px solid rgb(var(--color-line));
         

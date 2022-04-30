@@ -5,7 +5,6 @@ const StyledWorkstationTable = styled.div`
     padding:0;
     position: relative;
         & table {
-            table-layout: fixed;
             width: 100%;
             border-collapse:collapse;
             text-align: center;
@@ -32,6 +31,14 @@ const StyledWorkstationTable = styled.div`
                     }
                 }
             }
+            & th:nth-child(3) {
+                display: none;
+            }
+            @media(min-width:762px) {
+                & th:nth-child(3) {
+                    display: table-cell;
+                }
+            }
         }
 
         & tbody {
@@ -52,6 +59,15 @@ const StyledWorkstationTable = styled.div`
             & td:first-child {
                 text-align: start;
             }
+
+            & td:nth-child(3) {
+                display: none;
+            }
+            @media(min-width:762px) {
+                & td:nth-child(3) {
+                    display: table-cell;
+                }
+            }
         }
 
         & tfoot {
@@ -68,7 +84,7 @@ const StyledWorkstationTable = styled.div`
                 font-weight: bold;
             }
         }
-    
+
 `
 
 export default StyledWorkstationTable;

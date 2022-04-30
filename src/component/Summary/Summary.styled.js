@@ -1,7 +1,7 @@
 import styled from  'styled-components';
 
 const StyledSummary = styled.article`
-    width: 30%;
+    width: 100%;
     padding: 2rem;
     background-color: rgb(var(--color-alfa));
     text-align: center;
@@ -23,6 +23,9 @@ const StyledSummary = styled.article`
                 padding-right: 3rem;
             }
         }
+    }
+    @media(min-width: 762px) {
+        width: 30%;
     }
 `
 export default StyledSummary; 

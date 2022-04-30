@@ -1,11 +1,11 @@
 import styled, {css} from 'styled-components';
 
-const DefaultStyledDropdown = styled.span`
-    display:inline-block;
+const DefaultStyledDropdown = styled.div`
+    display: inline-block;
     position: relative;
-    width: 30%;
-    margin: auto;
+    max-width: 30%;
     margin-bottom: 3rem;
+    margin-left:1rem;
     border: 1px solid rgb(var(--color-line));
     font-size: 1.2rem;
     color: rgb(var(--color-alfa));

@@ -48,7 +48,6 @@ const GlobalStyle = createGlobalStyle`
         max-width: 1000px;
         width:100%;
         margin: auto;
-        padding: 2rem;
         font-family: "Roboto", Verdana, sans-serif;
         font-size: 1.6rem;
         color: rgb(var(--color-alfa));

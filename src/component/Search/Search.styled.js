@@ -1,18 +1,15 @@
 import styled, {css} from 'styled-components';
 
 const StyledSearch = styled.div`
-    display:inline-block;
     position: relative;
-    width: 60%;
-    margin: 0 2rem 2rem; 
     border: 1px solid rgb(var(--color-line));
     font-size: 1.2rem;
     color: rgb(var(--color-alfa));
     
     & input {
-        display: inline-block;
         padding: 1rem;
         height: 3.5rem;
+        width: 100%;
         outline: none;
         border: none;
         color: rgb(var(--color-alfa));

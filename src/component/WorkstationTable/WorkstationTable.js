@@ -93,6 +93,7 @@ const WorkstationTable = ({isCategorised, text}) => {
       content: () => componentRef.current,
     });
 
+    console.log()
     return (
         <>     
             <Button onClick={handlePrint} notAnimated={true}><FontAwesomeIcon icon={faPrint}/></Button>
@@ -108,8 +109,7 @@ const WorkstationTable = ({isCategorised, text}) => {
                         <React.Fragment key={ind}>
                             {<tr>
                                 <th colSpan="3">{cat}</th>
-                                <th></th>  
-                                <th>{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
+                                <th colSpan="2">{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
                             </tr>}
                             {sortedComponentList.filter(({category})=>category === cat)
                                 .map((item)=>(
@@ -142,11 +142,12 @@ const WorkstationTable = ({isCategorised, text}) => {
                     </tbody>
                     <tfoot>
                         <tr> 
-                            <td colSpan="4">Łączny koszt</td>
-                            <td>{`${getSumPrice(componentsList)} PLN`}</td>
+                            <td colSpan="2">Łączny koszt</td>
+                            <td></td>
+                            <td colSpan="2">{`${getSumPrice(componentsList)} PLN`}</td>
                         </tr>
                         <tr> 
-                            <td colSpan="5">{`Ilość pozycji: ${componentsList.length}`}</td>
+                            <td colSpan="4">{`Ilość pozycji: ${componentsList.length}`}</td>
                         </tr>
                     </tfoot>
                 </table>

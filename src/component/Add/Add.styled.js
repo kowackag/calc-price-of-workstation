@@ -5,8 +5,10 @@ const StyledApp = styled.span`
     font-size: 2.5rem;
     
     & > input {
+        /* display: inline-block; */
         padding: 1rem;
         margin-left: 2rem;
+        /* width:100%; */
         height: 4.6rem;
         outline: none;
         border: 1px solid rgb(var(--color-contrast));
