@@ -1,0 +1,8 @@
+{
+  "projectName": "calc-price-of-workstation",
+  "meta": {
+    "type": "frontend"
+  },
+  "packageManager": "npm",
+  "hash": "989bb48e"
+}

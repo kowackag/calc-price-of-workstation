@@ -51,7 +51,7 @@ http://localhost:3000
 
 ### **Links:**
 - [GitHub](https://github.com/kowackag/calc-price-of-workstation)
-- [live](https://calc-app-mdb.herokuapp.com/)
+- [live](https://malgorzata_kowacka-calc-price-of-workstation.mdbgo.io/)
 
 &nbsp;
 

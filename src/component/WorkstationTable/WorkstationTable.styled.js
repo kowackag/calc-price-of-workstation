@@ -34,11 +34,6 @@ const StyledWorkstationTable = styled.div`
             & th:nth-child(3) {
                 display: none;
             }
-            @media(min-width:762px) {
-                & th:nth-child(3) {
-                    display: table-cell;
-                }
-            }
         }
 
         & tbody {
@@ -63,11 +58,6 @@ const StyledWorkstationTable = styled.div`
             & td:nth-child(3) {
                 display: none;
             }
-            @media(min-width:762px) {
-                & td:nth-child(3) {
-                    display: table-cell;
-                }
-            }
         }
 
         & tfoot {
@@ -84,6 +74,20 @@ const StyledWorkstationTable = styled.div`
                 font-weight: bold;
             }
         }
+
+    @media(min-width:762px) {
+        & thead {
+            & th:nth-child(3) {
+                    display: table-cell;
+                }
+        }
+
+        & tbody {
+            & td:nth-child(3) {
+                    display: table-cell;
+            }
+        }
+    }
 
 `
 

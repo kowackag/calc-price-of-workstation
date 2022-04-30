@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const StyledApp = styled.section`
+const StyledApp = styled.article`
      & h1 {
-        margin-bottom: 4rem;
+        margin: 3rem;
         text-align: center;
         color: rgb(var(--color-alfa));
     }

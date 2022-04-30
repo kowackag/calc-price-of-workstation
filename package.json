@@ -1,5 +1,4 @@
 {
-  "homepage": "https://kowackag.github.com/calc-price-of-workstation",
   "name": "calc-price-of-workstation",
   "version": "0.1.0",
   "main": "index.js",
@@ -29,7 +28,6 @@
     "styled-components": "^5.3.3",
     "url-loader": "^4.1.1",
     "web-vitals": "^2.1.4"
-
   },
   "scripts": {
     "predeploy": "npm run build",
