@@ -1,4 +1,4 @@
-![](./public/Top.jpg)
+![](./public/screen-top.jpg)
 
 # Calculator of worstation price
 
