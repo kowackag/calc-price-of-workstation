@@ -1,4 +1,5 @@
 {
+  "homepage": "https://kowackag.github.com/calc-price-of-workstation",
   "name": "calc-price-of-workstation",
   "version": "0.1.0",
   "main": "index.js",

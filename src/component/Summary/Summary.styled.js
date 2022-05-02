@@ -9,16 +9,17 @@ const StyledSummary = styled.article`
     & h2 {
         color: white;
         font-size: 2rem;
-        margin-bottom: 2rem;
         text-align: center;
     }
     & form {      
+        padding:1rem;
         & div {
-            margin-top: 3rem;
+            margin-top: 2rem;
             & input+p {
                 position: relative;
             }
             & > button {
+                /* margin-top:2rem; */
                 padding-left: 3rem;
                 padding-right: 3rem;
             }

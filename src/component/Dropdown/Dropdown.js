@@ -5,7 +5,7 @@ import Error from './../Error/Error';
 
 import StyledDropdown from './Dropdown.styled';
 
-const Dropdown = ({name, value, items, setValue, err, isMutable}) => {
+const Dropdown = ({id, name, value, items, setValue, err, isMutable}) => {
     const [isActive, setIsActive] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
     const [isOnMouse, setIsOnMouse] = useState(false);
@@ -25,6 +25,7 @@ const Dropdown = ({name, value, items, setValue, err, isMutable}) => {
     return(
         <StyledDropdown active={isActive} onClick={()=>setIsActive(!isActive)}>
             <input 
+                id={id}
                 name={name} 
                 value={value || ""} 
                 onFocus={()=> {

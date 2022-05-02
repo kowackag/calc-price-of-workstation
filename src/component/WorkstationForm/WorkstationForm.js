@@ -105,8 +105,9 @@ const WorkstationForm = () => {
 
     return (
         <StyledWorkstationForm onSubmit={handleSubmit}>
-            <label>Kategoria</label>
+            <label htmlFor="category">Kategoria</label>
             <Dropdown 
+                id="category"
                 name="category" 
                 value={category} 
                 items={categories} 
@@ -114,7 +115,6 @@ const WorkstationForm = () => {
                 err={err.category}
             /> 
             <Add setNewCategory={setNewCategory}/>
-            
             <Container>
                 <label>Nazwa
                 <Search 
