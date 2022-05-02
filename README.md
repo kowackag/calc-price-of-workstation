@@ -1,4 +1,4 @@
-![](./public/top.jpg)
+![](./public/Top.jpg)
 
 # Calculator of worstation price
 
@@ -49,11 +49,11 @@ The application provides the possibility to:
 
 screen - non categorized
 
-![](./public/screen-table.jpg)
+![](./public/screen-non-cat.jpg)
 
 screen - categorized
 
-![](./public/screen-cat.jpg)
+![](./public/screen-categ.jpg)
 
 ### **Installation 💿**
 
