@@ -1,3 +1,5 @@
+![](./public/top.jpg)
+
 # Calculator of worstation price
 
 &nbsp;
@@ -5,6 +7,7 @@
 ## Table of contents
 
 [⭐ Overview](#⭐-overview)
+  - [The challenge](#the-challenge)
   - [Instalation](#Installation-💿)
   - [Links](#links)
 
@@ -26,6 +29,31 @@
 
 &nbsp;
 
+### **The challenge:**
+
+The challenge was to create calculator that will count the price of preparing workstation for a new worker.
+
+&nbsp;
+
+The application provides the possibility to: 
+- choosing one of the proposal of products or creacting a new products that will be display in table;
+- autocompliting the price if you choose the products from list;
+- searching some product in table;
+- categorizing the products by category;
+- editing the product in table;
+- making a sum of the total price 
+- making a sum of products prices in category;
+- sorting the products by name, price, description or category;
+- giving information users after entering incorrect data;
+- printing the table.
+
+screen - non categorized
+
+![](./public/screen-table.jpg)
+
+screen - categorized
+
+![](./public/screen-cat.jpg)
 
 ### **Installation 💿**
 
@@ -51,7 +79,7 @@ http://localhost:3000
 
 ### **Links:**
 - [GitHub](https://github.com/kowackag/calc-price-of-workstation)
-- [live](https://malgorzata_kowacka-calc-price-of-workstation.mdbgo.io/)
+- [live](https://kowackag.github.io/calc-price-of-workstation/)
 
 &nbsp;
 
@@ -141,7 +169,6 @@ const [getItem, setItem] = useStorage();
 
 - [Google Font](https://fonts.google.com/specimen/Roboto) - `Roboto`
 - [Font Avesome](https://fontawesome.com/)
-- 
 
 &nbsp;
 

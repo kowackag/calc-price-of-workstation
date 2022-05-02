@@ -25,10 +25,10 @@ const WorkstationTable = ({isCategorised, text}) => {
         
     const sortComponentList = (arr, element) => {
         const sortUp = (property) => (a,b) => {
-            return a[property].localeCompare(b[property]);
+            return a[property].toString().localeCompare(b[property].toString());
         }
         const sortDown = (property) => (a,b) => {
-            return b[property].localeCompare(a[property]);
+            return b[property].toString().localeCompare(a[property].toString());
         }
         switch (element.type) {
             case "up": {
@@ -93,10 +93,9 @@ const WorkstationTable = ({isCategorised, text}) => {
       content: () => componentRef.current,
     });
 
-    console.log()
     return (
         <>     
-            <Button onClick={handlePrint} notAnimated={true}><FontAwesomeIcon icon={faPrint}/></Button>
+            <Button name="print" onClick={handlePrint} notAnimated={true}><FontAwesomeIcon icon={faPrint}/></Button>
             <StyledWorkstationTable ref={componentRef}>
                 <table >
                     <thead>
@@ -107,7 +106,7 @@ const WorkstationTable = ({isCategorised, text}) => {
                     <tbody>
                     {isCategorised ? categories.map((cat,ind)=>(
                         <React.Fragment key={ind}>
-                            {<tr>
+                            {cat && <tr> 
                                 <th colSpan="3">{cat}</th>
                                 <th colSpan="2">{`${getSumPriceByCategory(componentsList, cat)} PLN`}</th>
                             </tr>}
@@ -121,7 +120,7 @@ const WorkstationTable = ({isCategorised, text}) => {
                                         <td>{
                                             <>
                                                 <Button onClick={deleteItem} id={item.id}>usuń</Button>
-                                                <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>                                
+                                                <Button onClick={e=>updateItem(e, item)} id={item.id}>zmień</Button>   
                                             </>
                                         }</td>
                                     </tr>))}
